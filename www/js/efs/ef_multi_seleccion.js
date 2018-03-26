@@ -2,7 +2,7 @@ ef_multi_seleccion.prototype = new ef();
 ef_multi_seleccion.prototype.constructor = ef_multi_seleccion;
 
 	/**
-	 * @class Elemento que permite la selección de varios valores. Clase base abstracta
+	 * @class Elemento que permite la selecciï¿½n de varios valores. Clase base abstracta
 	 * @constructor
 	 * @phpdoc classes/toba_ef_multi_seleccion.html toba_ef_multi_seleccion
 	 */
@@ -21,7 +21,7 @@ ef_multi_seleccion.prototype.constructor = ef_multi_seleccion;
 			this._error = 'es obligatorio.';
 		    return false;
 		}
-		//--- Mínimo
+		//--- Mï¿½nimo
 		if (this._limites[0] !== null) {
 			if (valores.length < this._limites[0]) {
 				elemento = (this._limites[0] == 1) ? "un elemento" : this._limites[0] + " elementos";				
@@ -29,11 +29,11 @@ ef_multi_seleccion.prototype.constructor = ef_multi_seleccion;
 				return false;	
 			}
 		}
-		//--- Máximo
+		//--- Mï¿½ximo
 		if (this._limites[1] !== null) {
 			if (valores.length > this._limites[1]) {
 				elemento = (this._limites[1] == 1) ? "un elemento" : this._limites[1] + " elementos";
-				this._error = "no puede tener más de " + elemento + " seleccionados.";
+				this._error = "no puede tener mï¿½s de " + elemento + " seleccionados.";
 				return false;	
 			}
 		}
@@ -54,20 +54,26 @@ ef_multi_seleccion.prototype.constructor = ef_multi_seleccion;
 			utilerias.style.display	= (solo_lectura) ? 'none' : '';
 		}
 	};
-	
+
 	/**
-	 *	Metodo aún no implementado!!!
+	 * Setea el estado actual
+	 * @type Array
 	 */
-	ef_multi_seleccion.prototype.set_estado = function(nuevo) {
-		alert('metodo set_estado del ef_multi_seleccion no implementado');
-	};	
+	ef_multi_seleccion_check.prototype.set_estado = function(estado) {
+		var elem = this.get_elementos();
+		for (var i=0; i < elem.length; i++) {
+			if (estado.indexOf(elem[i].value) > -1) {
+				elem[i].checked = true;
+			}
+		}
+	};
 
 	ef_multi_seleccion.prototype.resetear_estado = function() {
 		this.seleccionar_todo(false);
 	};	
 	
 	/**
-	 * Retorna verdadero si el ef tiene algún valor cargado
+	 * Retorna verdadero si el ef tiene algï¿½n valor cargado
 	 * @type boolean
 	 */	
 	ef_multi_seleccion.prototype.tiene_estado = function() {
@@ -82,7 +88,7 @@ ef_multi_seleccion_lista.prototype = new ef_multi_seleccion();
 ef_multi_seleccion_lista.constructor = ef_multi_seleccion_lista;
 
 	/**
-	 * @class Permite la selección de varios valores a partir de una lista. Equivale al tag <em>select multiple</em> en HTML
+	 * @class Permite la selecciï¿½n de varios valores a partir de una lista. Equivale al tag <em>select multiple</em> en HTML
 	 * @constructor
 	 * @phpdoc classes/toba_ef_multi_seleccion_lista.html toba_ef_multi_seleccion_lista
 	 */
@@ -142,7 +148,7 @@ ef_multi_seleccion_lista.constructor = ef_multi_seleccion_lista;
 	};
 	
 	/**
-	 * Selecciona todos o ningún los elementos de la lista
+	 * Selecciona todos o ningï¿½n los elementos de la lista
 	 * @param {boolean} todos True seleciona todos, false ninguno
 	 */
 	ef_multi_seleccion_lista.prototype.seleccionar_todo = function(todos) {
@@ -160,7 +166,7 @@ ef_multi_seleccion_check.prototype = new ef_multi_seleccion();
 ef_multi_seleccion_check.constructor = ef_multi_seleccion_check;
 
 	/**
-	 * @class Permite la selección de varios valores a partir de un conjunto de checkboxes
+	 * @class Permite la selecciï¿½n de varios valores a partir de un conjunto de checkboxes
 	 * @constructor
 	 * @phpdoc classes/toba_ef_multi_seleccion_check.html toba_ef_multi_seleccion_check
 	 */
@@ -211,7 +217,7 @@ ef_multi_seleccion_check.constructor = ef_multi_seleccion_check;
 	};
 	
 	/**
-	 * Selecciona todos o ningún los elementos de la lista
+	 * Selecciona todos o ningï¿½n los elementos de la lista
 	 * @param {boolean} todos True seleciona todos, false ninguno
 	 */	
 	ef_multi_seleccion_check.prototype.seleccionar_todo = function(todos) {
@@ -314,7 +320,7 @@ ef_multi_seleccion_doble.constructor = ef_multi_seleccion_doble;
 
 
 	/**
-	 * @class Permite la selección de varios valores a partir de una lista doble, pasando los elementos de un lado hacia el otro
+	 * @class Permite la selecciï¿½n de varios valores a partir de una lista doble, pasando los elementos de un lado hacia el otro
 	 * @constructor
 	 * @phpdoc classes/toba_ef_multi_seleccion_doble.html toba_ef_multi_seleccion_doble
 	 */
@@ -349,7 +355,7 @@ ef_multi_seleccion_doble.constructor = ef_multi_seleccion_doble;
 	};
 	
 	/**
-	 * Selecciona todos o ningún los elementos de la lista
+	 * Selecciona todos o ningï¿½n los elementos de la lista
 	 * @param {boolean} todos True seleciona todos, false ninguno
 	 */
 	ef_multi_seleccion_doble.prototype.seleccionar_todo = function(todos) {

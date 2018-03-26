@@ -1,6 +1,6 @@
 <?php
 /**
- * Esta clase fue y será generada automáticamente. NO EDITAR A MANO.
+ * Esta clase fue y serï¿½ generada automï¿½ticamente. NO EDITAR A MANO.
  * @ignore
  */
 class toba_autoload 
@@ -37,6 +37,7 @@ class toba_autoload
 		'toba_db_odbc' => 'lib/db/toba_db_odbc.php',
 		'toba_db_postgres7' => 'lib/db/toba_db_postgres7.php',
 		'toba_db_sqlserver' => 'lib/db/toba_db_sqlserver.php',
+        'toba_db_oracle' => 'lib/db/toba_db_oracle.php',
 		'toba_parser_error_db' => 'lib/db/toba_parser_error_db.php',
 		'toba_parser_error_db_postgres7' => 'lib/db/toba_parser_error_db_postgres7.php',
 		'toba_pm_a_registro' => 'lib/puntos_montaje/toba_pm_a_registro.php',

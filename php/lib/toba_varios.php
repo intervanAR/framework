@@ -46,7 +46,7 @@
 	}
 
 	/**
-	 * Si $var está seteada la devuelve, sino devuelve el valor por defecto
+	 * Si $var estï¿½ seteada la devuelve, sino devuelve el valor por defecto
 	 * de la misma
 	 * @param mixed $var
 	 * @param mixed $default
@@ -60,11 +60,11 @@
 	}
 
 	/**
-	 * Devuelve el nombre de la clase de acuerdo a la extensión de proyecto
+	 * Devuelve el nombre de la clase de acuerdo a la extensiï¿½n de proyecto
 	 * que se indique
 	 * @param string $nombre
 	 * @param string $proyecto
-	 * @param array $extensiones arreglo asociativo con 2 parámetros: el 1ro es
+	 * @param array $extensiones arreglo asociativo con 2 parï¿½metros: el 1ro es
 	 * extension_toba y el 2do extension_proyecto. Se obtiene de
 	 * toba::proyecto()->get_clases_extendidas()
 	 */
@@ -220,10 +220,10 @@
 
 	/** Transforma un json o arreglo en utf8 a un arreglo en latin1 */
 	function rest_decode($datos)
-	{		
+	{
 		if(is_string($datos) ){
 			$datos = json_decode($datos, true);
-		} //es un json ya decodificada guzzle->response->json		
+		} //es un json ya decodificada guzzle->response->json
 		return (! is_null($datos)) ?  array_a_latin1($datos) : array();
 	}
 
@@ -236,7 +236,7 @@
 
 	/**
 	 * Elimina los campos del array con valor null. No se modifica el arreglo
-	 * pasado por parámetro, se devuelve uno nuevo con las componentes vacías
+	 * pasado por parï¿½metro, se devuelve uno nuevo con las componentes vacï¿½as
 	 * eliminadas
 	 * @param array $array
 	 * @return array
@@ -255,7 +255,7 @@
 	}
 
 	/**
-	 * Borra todos los subarrays vacíos de $array. Modifica la variable de entrada
+	 * Borra todos los subarrays vacï¿½os de $array. Modifica la variable de entrada
 	 * @param array $array
 	 */
 	function array_borrar_subarrays_vacios(&$array)
@@ -268,8 +268,8 @@
 	}
 
 	/**
-	 * Si el parámetro no es un arreglo o es un arreglo sin la componente 0 mete
-	 * el parámetro dentro de un arreglo
+	 * Si el parï¿½metro no es un arreglo o es un arreglo sin la componente 0 mete
+	 * el parï¿½metro dentro de un arreglo
 	 * @param mixed $elem
 	 * @return array
 	 */
@@ -339,11 +339,11 @@
 	function sl(){ return salto_linea(); }
 
 	function tecla_acceso($etiqueta)
-	//Toma una etiqueta e intenta extraer el caracter de acceso rápido
+	//Toma una etiqueta e intenta extraer el caracter de acceso rï¿½pido
 	// Ej: Proce&sar retornar array('<u>P</u>rocesar', 'P')
 	{
-		$escapador = toba::escaper();		
-		$pos_guia = strpos($etiqueta, '&');		
+		$escapador = toba::escaper();
+		$pos_guia = strpos($etiqueta, '&');
 		if ($pos_guia === false || ($pos_guia ==  strlen($etiqueta) - 1)) {
 			$nueva_etiqueta = $escapador->escapeHtmlAttr($etiqueta);
 			$tecla = null;
@@ -351,19 +351,19 @@
 			$partes = explode('&', $etiqueta);
 			if (count($partes) != 2) {
 				throw new toba_error_def('No puede existir mas de un shortcut en la misma etiqueta');
-			}			
+			}
 			$tecla = substr($partes[1], 0, 1);
 			$escapada = $escapador->escapeHtmlAttr($partes[0]. $partes[1]);
-			
-			//---Me fijo si el escapado modifica algun otro caracter en las partes que pueda correr la guia a la derecha			
-			$parte1_escap = $escapador->escapeHtmlAttr($partes[0]);		
+
+			//---Me fijo si el escapado modifica algun otro caracter en las partes que pueda correr la guia a la derecha
+			$parte1_escap = $escapador->escapeHtmlAttr($partes[0]);
 			$tags = $escapador->quitar_tags($etiqueta);
 			//--- Si hay tags completos, como no se escapan se mantiene la posicion original, sino se calcula el corrimiento
-			$corrimiento_izq = empty($tags) ? strlen($parte1_escap) - strlen($partes[0]) : 0;			
+			$corrimiento_izq = empty($tags) ? strlen($parte1_escap) - strlen($partes[0]) : 0;
 			$nueva_etiqueta = substr($escapada, 0, $pos_guia + $corrimiento_izq) . "<u>$tecla</u>". substr($escapada, $pos_guia  +  1 + $corrimiento_izq);
 		}
-		return array($nueva_etiqueta, $tecla);
-	}
+			return array($nueva_etiqueta, $tecla);
+		}
 	
 	function array_borrar_valor(& $arreglo, $valor)
 	{
@@ -398,11 +398,11 @@
 	 * @param string $valor Campo valor (asociativo o numerico) de cada registro
 	 * @return array 
 	 */
-	function rs_convertir_asociativo($datos_recordset, $claves=array(0), $valor=1)
-	{
-		if (!isset($datos_recordset)) {
-			return array();	
-		}
+    function rs_convertir_asociativo($datos_recordset, $claves=array(0), $valor=1)
+    {
+    	if (!isset($datos_recordset)) {
+    		return array();	
+    	}
 		$valores = array();
 		foreach ($datos_recordset as $fila){
 			$valores_clave = array();
@@ -420,11 +420,11 @@
 				$valores[implode(apex_qs_separador, $valores_clave)] = $fila[$valor];
 			}
 		}
-		return $valores;
-	}	
-
+        return $valores;
+    }	
+    
 	//-----------------------------------------------------------------	
-
+	    
 	/**
 	 * Toma una matriz en formato recordset y retorna la misma matriz pero con la primer componente asociativa
 	 *
@@ -433,11 +433,11 @@
 	 * @param string $valores Campos valor (asociativo o numerico) de cada registro, se asumen todos los campos
 	 * @return array 
 	 */
-	function rs_convertir_asociativo_matriz($datos_recordset, $claves, $valores=null)
-	{
-		if (!isset($datos_recordset)) {
-			return array();	
-		}
+    function rs_convertir_asociativo_matriz($datos_recordset, $claves, $valores=null)
+    {
+    	if (!isset($datos_recordset)) {
+    		return array();	
+    	}
 		$salida = array();
 		foreach ($datos_recordset as $fila){
 			$valores_clave = array();
@@ -446,7 +446,7 @@
 			}
 			if (isset($valores)) {
 				foreach ($valores as $valor) {
-					$salida[implode(apex_qs_separador, $valores_clave)][$valor] = $fila[$valor];
+	            	$salida[implode(apex_qs_separador, $valores_clave)][$valor] = $fila[$valor];
 				}
 			} else {
 				$clave_temp = implode(apex_qs_separador, $valores_clave);
@@ -457,8 +457,8 @@
 				}
 			}
 		}
-		return $salida;
-	}
+        return $salida;
+    }
 
 	//-----------------------------------------------------------------	
 
@@ -519,8 +519,8 @@
 				$valor = str_replace("\"","'",$valor);
 				$id_js = $escapador->escapeJs($id);
 				$valor_js = ($es_objeto) ? $valor : '"'. $escapador->escapeJs($valor). '"';
-				
-				$js .= "$nombre"."['$id_js'] = $valor_js;\n";	
+
+				$js .= "$nombre"."['$id_js'] = $valor_js;\n";
 			}
 		}
 		return $js;
@@ -565,21 +565,21 @@
 	{
 		return (posicion_ruta_vendor($dir) !== false);
 	}
-	
-	function posicion_ruta_vendor($dir) 
+
+	function posicion_ruta_vendor($dir)
 	{
 		return $pos = stripos($dir, DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR);
 	}
-	
-	function generar_archivo_entorno($instal_dir, $id_instancia, $es_windows=false)	
+
+	function generar_archivo_entorno($instal_dir, $id_instancia, $es_windows=false)
 	{
 		if (! $es_windows) {
 			$contenido =  "export TOBA_DIR=".toba_dir()."\n";
 			$contenido .= "export TOBA_INSTANCIA=$id_instancia\n";
-			$contenido.= "export TOBA_INSTALACION_DIR=$instal_dir\n";			
+			$contenido.= "export TOBA_INSTALACION_DIR=$instal_dir\n";
 			$contenido .= 'export PATH="$TOBA_DIR/bin:$PATH"'."\n";
 			$contenido .= "echo \"Entorno cargado.\"\n";
-			$contenido .= "echo \"Ejecute 'toba' para ver la lista de comandos disponibles.\"\n";			
+			$contenido .= "echo \"Ejecute 'toba' para ver la lista de comandos disponibles.\"\n";
 		} else {
 			$contenido = "@echo off\n";
 			$contenido .= "set TOBA_DIR=".toba_dir()."\n";
@@ -591,11 +591,11 @@
 		}
 		return $contenido;
 	}
-	
-	
-	
+
+
+
 	/**
-	 * Clase que otorga rangos para asignación de tabs
+	 * Clase que otorga rangos para asignaciï¿½n de tabs
 	 * @package Varios
 	 */
 	class toba_manejador_tabs 
@@ -623,7 +623,7 @@
 	}
 	
 	/**
-	*	El objeto_de_mentira intenta superar su ejecución sin causar ningun error ni warning
+	*	El objeto_de_mentira intenta superar su ejecuciï¿½n sin causar ningun error ni warning
 	*	Util para simulaciones
 	* @ignore 
 	*/
@@ -740,7 +740,7 @@
 			case '~':
 				return preg_match($valor2, $valor1);		//$valor2 es el pattern
 			default:
-				throw new toba_error("El operador $operador no está soportado");
+				throw new toba_error("El operador $operador no estï¿½ soportado");
 		}
 	}
 	
@@ -797,26 +797,26 @@
 	
 	function ejecutar_consola($cmd, &$stdout, &$stderr)
 	{
-		$outfile = tempnam(".", "cmd");
-		$errfile = tempnam(".", "cmd");
-		$descriptorspec = array(
-			0 => array("pipe", "r"),
-			1 => array("file", $outfile, "w"),
-			2 => array("file", $errfile, "w")
-		);
-		$proc = proc_open($cmd, $descriptorspec, $pipes);
-
+	    $outfile = tempnam(".", "cmd");
+	    $errfile = tempnam(".", "cmd");
+	    $descriptorspec = array(
+	        0 => array("pipe", "r"),
+	        1 => array("file", $outfile, "w"),
+	        2 => array("file", $errfile, "w")
+	    );
+	    $proc = proc_open($cmd, $descriptorspec, $pipes);
+	   
 		if (!is_resource($proc)) {return 255;}
-
-		fclose($pipes[0]);    //Don't really want to give any input
-
-		$exit = proc_close($proc);
-		$stdout = file($outfile);
-		$stderr = file($errfile);
-
-		unlink($outfile);
-		unlink($errfile);
-		return $exit;
+	
+	    fclose($pipes[0]);    //Don't really want to give any input
+	
+	    $exit = proc_close($proc);
+	    $stdout = file($outfile);
+	    $stderr = file($errfile);
+	
+	    unlink($outfile);
+	    unlink($errfile);
+	    return $exit;
 	}	
 
 	function cambiar_fecha($fecha,$sep_actual,$sep_nuevo, $buscar_hora=false){
@@ -892,22 +892,30 @@
 		return toba_xml_tablas::decode($valor);
 	}
 
-	/**
-	 * Transforma la salida de parse_url nuevamente en un string
-	 * @param $parsed_url Salida de parse_url
-	 * @return string
-	 */
-	function unparse_url($parsed_url) {
-		$scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
-		$host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
-		$port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
-		$user     = isset($parsed_url['user']) ? $parsed_url['user'] : '';
-		$pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : '';
-		$pass     = ($user || $pass) ? "$pass@" : '';
-		$path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
-		$query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
-		$fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
-		return "$scheme$user$pass$host$port$path$query$fragment";
-	}
+    /**
+     * Transforma la salida de parse_url nuevamente en un string
+     * @param $parsed_url Salida de parse_url
+     * @return string
+     */
+    function unparse_url($parsed_url) {
+        $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
+        $host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
+        $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
+        $user     = isset($parsed_url['user']) ? $parsed_url['user'] : '';
+        $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : '';
+        $pass     = ($user || $pass) ? "$pass@" : '';
+        $path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+        $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
+        $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
+        return "$scheme$user$pass$host$port$path$query$fragment";
+    }
 
+	function quitar_punto_coma_final($cadena) {
+		$cadena = trim($cadena);
+		if (substr($cadena, -1, 1) == ';') {
+			return substr($cadena, 0, -1);
+		} else {
+			return $cadena;
+		}
+	}
 ?>

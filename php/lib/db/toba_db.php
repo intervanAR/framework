@@ -9,8 +9,8 @@ define("apex_sql_where","%w%");
 define("apex_sql_from","%f%");
 
 /**
-* Representa una conexión a la base de datos. Permite ejecutar comandos y consultas SQL
-* En forma predeterminada utiliza los drivers PDO que tiene php desde la versión 5.1
+* Representa una conexiï¿½n a la base de datos. Permite ejecutar comandos y consultas SQL
+* En forma predeterminada utiliza los drivers PDO que tiene php desde la versiï¿½n 5.1
 * @package Fuentes
 */
 class toba_db
@@ -40,13 +40,13 @@ class toba_db
 	protected $registro_sentencias = array();
 	
 	protected $logger;
-	
+
 	protected $sslmode;
 	protected $cert_path;
 	protected $key_path;
 	protected $crl_path;
 	protected $cacert_path;
-	
+
 	/**
 	 * Constructor de la clase
 	 * @param mixed $profile	Host de la conexion
@@ -59,7 +59,7 @@ class toba_db
 	 * @param mixed $cert_path	Path al certificado cliente
 	 * @param mixed $key_path	Path a la clave del certificado cliente
 	 * @param mixed $crl_path	Path a la lista de revocacion de certificados
-	 * @param mixed $cacert_path	Path al certificado de la CA 
+	 * @param mixed $cacert_path	Path al certificado de la CA
 	 */
 	function __construct($profile, $usuario, $clave, $base, $puerto=null, $server='', $sslmode='', $cert_path='', $key_path='', $crl_path='', $cacert_path='')
 	{
@@ -85,9 +85,9 @@ class toba_db
 	{
 		$this->parser_errores = $parser;
 	}
-		
+
 	/**
-	 * Libera la conexión a la base
+	 * Libera la conexiï¿½n a la base
 	 */
 	function destruir()
 	{
@@ -108,7 +108,7 @@ class toba_db
 				$this->conexion = new PDO($this->get_dsn(), $this->usuario, $this->clave, $opciones);
 				$this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			} catch (PDOException $e) {
-				$this->log("No es posible realizar la conexión a la base. Mensaje: " . $e->getMessage() , 'error');
+				$this->log("No es posible realizar la conexiï¿½n a la base. Mensaje: " . $e->getMessage() , 'error');
 				$ee = new toba_error_db($e, null, $this->parser_errores, false);
 				throw $ee;				
 			}
@@ -125,7 +125,7 @@ class toba_db
 	}
 	
 	/**
-	 * Retorna los parámetros con los que fue construida la conexión
+	 * Retorna los parï¿½metros con los que fue construida la conexiï¿½n
 	 * @return array
 	 */
 	function get_parametros()
@@ -153,12 +153,12 @@ class toba_db
 		if (trim($text) != '') {
 			$text = substr($text, 0, strlen($delimitador) * - 1);
 		}
-		return $text;		
+		return $text;
 	}
-	
+
 	/**
-	 * Cuando la conexión esta en modo debug se imprime cada consulta/comando realizado
-	 * @param boolean $loguear No deja las querys en el logger, solo se mantienen durante el pedido de página
+	 * Cuando la conexiï¿½n esta en modo debug se imprime cada consulta/comando realizado
+	 * @param boolean $loguear No deja las querys en el logger, solo se mantienen durante el pedido de pï¿½gina
 	 */
 	function set_modo_debug($debug=true, $loguear=true)
 	{
@@ -173,7 +173,7 @@ class toba_db
 	{
 		$this->debug_sqls = array();
 	}
-	
+
 	/**
 	 * Setea un objeto que maneja el log
 	 * @param toba_logger $log
@@ -182,7 +182,7 @@ class toba_db
 	{
 		$this->logger = $log;
 	}
-	
+
 	/**
 	 * Loguea un mensaje con un nivel definido
 	 * @param string $msg
@@ -193,17 +193,17 @@ class toba_db
 	 */
 	protected function log($msg, $nivel, $extra = null)
 	{
-		if (isset($this->logger)) {			
+		if (isset($this->logger)) {
 			$this->logger->$nivel($msg, $extra);
 		} else {
-			 toba_logger::instancia()->trace();		//No deberia entrar nunca por aca, si lo hace.. obtenemos la secuencia de llamada y dejamos el msg de aviso			
-			throw new toba_error('La clase toba_db, no tiene asignado un logger, revise el log');			
+			 toba_logger::instancia()->trace();		//No deberia entrar nunca por aca, si lo hace.. obtenemos la secuencia de llamada y dejamos el msg de aviso
+			throw new toba_error('La clase toba_db, no tiene asignado un logger, revise el log');
 		}
 	}
-	
+
 	/**
 	 * Agrega el mensaje de log con timestamp
-	 * @ignore 
+	 * @ignore
 	 */
 	protected function log_debug_inicio($sql)
 	{
@@ -238,7 +238,7 @@ class toba_db
 	}
 
 	/**
-	 * Activa/desactiva el resgistro de los comandos de ejecución.
+	 * Activa/desactiva el resgistro de los comandos de ejecuciï¿½n.
 	 * @param boolean $desactivar_ejecucion Indica si se ejecuta el comando y se registra(FALSE) o si solamente se registra(TRUE). Por defecto FALSE
 	 * @param boolean $activar TRUE activa el resgistro, FALSE desactiva el registro. Por defecto TRUE
 	 */
@@ -260,8 +260,8 @@ class toba_db
 	}
 
 	/**
-	 * Exporta el registro de los comandos de ejecución y consulta a archivos.
-	 * @param string $archivo_ejecucion Archivo al que se desea exportar el contenido del registro de ejecución.
+	 * Exporta el registro de los comandos de ejecuciï¿½n y consulta a archivos.
+	 * @param string $archivo_ejecucion Archivo al que se desea exportar el contenido del registro de ejecuciï¿½n.
 	 * @param string $archivo_consulta Archivo al que se desea exportar el contenido del registro de consulta.
 	 */
 	function exportar_registro($archivo_ejecucion = '', $archivo_consulta = '')
@@ -272,12 +272,12 @@ class toba_db
 			{
 				$pos = strrpos($archivo_ejecucion, '\\');
 				if ($pos === false) {
-					$ee = new Exception('Ruta del archivo de ejecución inválida');
+					$ee = new Exception('Ruta del archivo de ejecuciï¿½n invï¿½lida');
 					throw $ee;
 				}
 				
 				if (!file_exists(substr($archivo_ejecucion, 0, $pos))) {
-					$ee = new Exception('Ruta del archivo de ejecución inexistente');
+					$ee = new Exception('Ruta del archivo de ejecuciï¿½n inexistente');
 					throw $ee;
 				}
 			}
@@ -286,7 +286,7 @@ class toba_db
 			{
 				$pos = strrpos($archivo_consulta, '\\');
 				if ($pos === false) {
-					$ee = new Exception('Ruta del archivo de consulta inválida');
+					$ee = new Exception('Ruta del archivo de consulta invï¿½lida');
 					throw $ee;
 				}
 				
@@ -331,8 +331,8 @@ class toba_db
 	}
 
 	/**
-	 * Convierte un string a una representación segura para el motor. Evita
-	 * la inyección de código malicioso dentro de la sentencia SQL
+	 * Convierte un string a una representaciï¿½n segura para el motor. Evita
+	 * la inyecciï¿½n de cï¿½digo malicioso dentro de la sentencia SQL
 	 * @param mixed $dato Puede ser un string o un arreglo
 	 */
 	function quote($dato)
@@ -368,6 +368,7 @@ class toba_db
 		if (is_array($sql)) {
 			foreach(array_keys($sql) as $id) {
 				try {
+					$sql[$id] = $this->sentencia_preparar_motor($sql[$id]);
 					$sql_x = $this->pegar_estampilla_log($sql[$id]);
 					if ($this->registrar_ejecucion) {
 						$this->registro_ejecucion[] = $sql_x;
@@ -386,6 +387,7 @@ class toba_db
 				}
 			}
 		} else {
+			$sql = $this->sentencia_preparar_motor($sql);
 			$sql = $this->pegar_estampilla_log($sql);
 			try {
 				if ($this->registrar_ejecucion) {
@@ -450,6 +452,7 @@ class toba_db
 			$tipo_fetch=toba_db_fetch_asoc;	
 		}
 		
+		$sql = $this->sentencia_preparar_motor($sql);
 		$sql = $this->pegar_estampilla_log($sql);		
 		try {
 			if ($this->registrar_consultas) {
@@ -472,7 +475,7 @@ class toba_db
 	
 	/**
 	*	Ejecuta una consulta sql y retorna la primer fila del resultado.
-	* 	Es útil cuando se sabe de antemano que el resultado es una única fila
+	* 	Es ï¿½til cuando se sabe de antemano que el resultado es una ï¿½nica fila
 	* 	
 	*	@param string $sql Consulta SQL
 	*	@param string $tipo_fetch Modo Fetch de ADO, por defecto toba_db_fetch_asoc
@@ -489,6 +492,7 @@ class toba_db
 		if (! isset($tipo_fetch)) {
 			$tipo_fetch=toba_db_fetch_asoc;	
 		}
+		$sql = $this->sentencia_preparar_motor($sql);
 		$sql = $this->pegar_estampilla_log($sql);
 		try {
 			if ($this->registrar_consultas) {
@@ -502,7 +506,7 @@ class toba_db
 				if ($this->debug) $this->log_debug_fin();
 				return $statement->fetch($tipo_fetch);
 			}
-		} catch (PDOException $e) {		
+		} catch (PDOException $e) {
 			$this->log($e->getMessage(), 'error');
 			if ($lanzar_excepcion) {
 				$ee = new toba_error_db($e, $this->cortar_sql($sql), $this->parser_errores, false);
@@ -515,7 +519,7 @@ class toba_db
 
 	/**
 	*	Ejecuta una consulta sql y retorna true si existen datos
-	* 	Es útil cuando solo se quiere saber si una condicion se cumple o no en la base
+	* 	Es ï¿½til cuando solo se quiere saber si una condicion se cumple o no en la base
 	* 	
 	*	@param string $sql Consulta SQL
 	*	@return boolean Verdadero si la consulta retorna al menos una registro
@@ -543,7 +547,7 @@ class toba_db
 	}
 
 	/**
-	 * Devuelve el id del último insert en la base. Si el motor es postgres
+	 * Devuelve el id del ï¿½ltimo insert en la base. Si el motor es postgres
 	 * se debe indicar la secuencia correspondiente para tener resultados significativos
 	 * @param string $secuencia Nombre de la secuencia que tiene asociada el id
 	 * @return mixed
@@ -551,6 +555,12 @@ class toba_db
 	function ultimo_insert_id($secuencia = null)
 	{
 		return $this->conexion->lastInsertId($secuencia);
+	}
+
+	function sentencia_preparar_motor($sql)
+	{
+		if ($this->motor === 'oracle') return quitar_punto_coma_final($sql);
+		return $sql;
 	}
 
 	//------------------------------------------------------------------------
@@ -763,7 +773,7 @@ class toba_db
 	//------------------------------------------------------------------------
 	
 	/**
-	 * Ejecuta un BEGIN TRANSACTION en la conexión
+	 * Ejecuta un BEGIN TRANSACTION en la conexiï¿½n
 	 */
 	function abrir_transaccion()
 	{
@@ -772,7 +782,7 @@ class toba_db
 	}
 
 	/**
-	 * Ejecuta un ROLLBACK en la conexión
+	 * Ejecuta un ROLLBACK en la conexiï¿½n
 	 */	
 	function abortar_transaccion()
 	{
@@ -781,7 +791,7 @@ class toba_db
 	}
 	
 	/**
-	 * Ejecuta un COMMIT en la conexión
+	 * Ejecuta un COMMIT en la conexiï¿½n
 	 */		
 	function cerrar_transaccion()
 	{
@@ -790,8 +800,8 @@ class toba_db
 	}
 
 	/**
-	*	Ejecuta un conjunto de comandos dentro de una transacción
-	*	En caso de error en algún comando la aborta
+	*	Ejecuta un conjunto de comandos dentro de una transacciï¿½n
+	*	En caso de error en algï¿½n comando la aborta
 	*	@param array $sentencias Conjunto de comandos sql
 	*/
 	function ejecutar_transaccion($sentencias_sql)
@@ -827,22 +837,22 @@ class toba_db
 	}
 
 	/**
-	 * Fuerza a que los chequeos de CONSTRAINTS de la transacción en curso se hagan al finalizar la misma
+	 * Fuerza a que los chequeos de CONSTRAINTS de la transacciï¿½n en curso se hagan al finalizar la misma
 	 * @see retrasar_constraints
 	 */
 	function retrazar_constraints()
 	{
 		throw new toba_error("Deberia utilizar el metodo retrasar_constraints");
 	}
-	
+
 	/**
-	 * Fuerza a que los chequeos de CONSTRAINTS de la transacción en curso se hagan al finalizar la misma
+	 * Fuerza a que los chequeos de CONSTRAINTS de la transacciï¿½n en curso se hagan al finalizar la misma
 	 */
 	function retrasar_constraints()
 	{
 		throw new toba_error("No implementado para el motor: $this->motor");
 	}
-	
+
 	//------------------------------------------------------------------------
 	//-- INSPECCION del MODELO de DATOS
 	//------------------------------------------------------------------------
@@ -863,106 +873,106 @@ class toba_db
 	function get_tipo_datos_generico($tipo)
 	{
 		$tipo=strtoupper($tipo);
-		static $typeMap = array(
-			'VARCHAR' => 'C',
-			'VARCHAR2' => 'C',
-			'CHAR' => 'C',
-			'C' => 'C',
-			'STRING' => 'C',
-			'NCHAR' => 'C',
-			'NVARCHAR' => 'C',
-			'VARYING' => 'C',
-			'BPCHAR' => 'C',
-			'CHARACTER' => 'C',
-			'INTERVAL' => 'C',  # Postgres
-			##
-			'LONGCHAR' => 'X',
-			'TEXT' => 'X',
-			'NTEXT' => 'X',
-			'M' => 'X',
-			'X' => 'X',
-			'CLOB' => 'X',
-			'NCLOB' => 'X',
-			'LVARCHAR' => 'X',
-			##
-			'BLOB' => 'B',
-			'IMAGE' => 'B',
-			'BINARY' => 'B',
-			'VARBINARY' => 'B',
-			'LONGBINARY' => 'B',
-			'BYTEA' => 'B',
-			'B' => 'B',
-			##
-			'YEAR' => 'F', // mysql
-			'DATE' => 'F',
-			'D' => 'F',
-			##
-			'TIME' => 'T',
-			'TIMESTAMP' => 'T',
-			'DATETIME' => 'T',
-			'TIMESTAMPTZ' => 'T',
-			'T' => 'T',
-			##
-			'BOOL' => 'L',
-			'BOOLEAN' => 'L', 
-			'BIT' => 'L',
-			'L' => 'L',
-			# SERIAL... se tratan como enteros#
-			'COUNTER' => 'E',
-			'E' => 'E',
-			'SERIAL' => 'E', // ifx
-			'INT IDENTITY' => 'E',
-			##
-			'INT' => 'E',
-			'INT2' => 'E',
-			'INT4' => 'E',
-			'INT8' => 'E',
-			'INTEGER' => 'E',
-			'INTEGER UNSIGNED' => 'E',
-			'SHORT' => 'E',
-			'TINYINT' => 'E',
-			'SMALLINT' => 'E',
-			'E' => 'E',
-			##
-			'LONG' => 'N', // interbase is numeric, oci8 is blob
-			'BIGINT' => 'N', // this is bigger than PHP 32-bit integers
-			'DECIMAL' => 'N',
-			'DEC' => 'N',
-			'REAL' => 'N',
-			'DOUBLE' => 'N',
-			'DOUBLE PRECISION' => 'N',
-			'SMALLFLOAT' => 'N',
-			'FLOAT' => 'N',
-			'FLOAT8' => 'N',
-			'NUMBER' => 'N',
-			'NUM' => 'N',
-			'NUMERIC' => 'N',
-			'MONEY' => 'N',
-
-			## informix 9.2
-			'SQLINT' => 'E', 
-			'SQLSERIAL' => 'E', 
-			'SQLSMINT' => 'E', 
-			'SQLSMFLOAT' => 'N', 
-			'SQLFLOAT' => 'N', 
-			'SQLMONEY' => 'N', 
-			'SQLDECIMAL' => 'N', 
-			'SQLDATE' => 'F', 
-			'SQLVCHAR' => 'C', 
-			'SQLCHAR' => 'C', 
-			'SQLDTIME' => 'T', 
-			'SQLINTERVAL' => 'N', 
-			'SQLBYTES' => 'B', 
-			'SQLTEXT' => 'X' 
+	static $typeMap = array(
+		'VARCHAR' => 'C',
+		'VARCHAR2' => 'C',
+		'CHAR' => 'C',
+		'C' => 'C',
+		'STRING' => 'C',
+		'NCHAR' => 'C',
+		'NVARCHAR' => 'C',
+		'VARYING' => 'C',
+		'BPCHAR' => 'C',
+		'CHARACTER' => 'C',
+		'INTERVAL' => 'C',  # Postgres
+		##
+		'LONGCHAR' => 'X',
+		'TEXT' => 'X',
+		'NTEXT' => 'X',
+		'M' => 'X',
+		'X' => 'X',
+		'CLOB' => 'X',
+		'NCLOB' => 'X',
+		'LVARCHAR' => 'X',
+		##
+		'BLOB' => 'B',
+		'IMAGE' => 'B',
+		'BINARY' => 'B',
+		'VARBINARY' => 'B',
+		'LONGBINARY' => 'B',
+		'BYTEA' => 'B',
+		'B' => 'B',
+		##
+		'YEAR' => 'F', // mysql
+		'DATE' => 'F',
+		'D' => 'F',
+		##
+		'TIME' => 'T',
+		'TIMESTAMP' => 'T',
+		'DATETIME' => 'T',
+		'TIMESTAMPTZ' => 'T',
+		'T' => 'T',
+		##
+		'BOOL' => 'L',
+		'BOOLEAN' => 'L', 
+		'BIT' => 'L',
+		'L' => 'L',
+		# SERIAL... se tratan como enteros#
+		'COUNTER' => 'E',
+		'E' => 'E',
+		'SERIAL' => 'E', // ifx
+		'INT IDENTITY' => 'E',
+		##
+		'INT' => 'E',
+		'INT2' => 'E',
+		'INT4' => 'E',
+		'INT8' => 'E',
+		'INTEGER' => 'E',
+		'INTEGER UNSIGNED' => 'E',
+		'SHORT' => 'E',
+		'TINYINT' => 'E',
+		'SMALLINT' => 'E',
+		'E' => 'E',
+		##
+		'LONG' => 'N', // interbase is numeric, oci8 is blob
+		'BIGINT' => 'N', // this is bigger than PHP 32-bit integers
+		'DECIMAL' => 'N',
+		'DEC' => 'N',
+		'REAL' => 'N',
+		'DOUBLE' => 'N',
+		'DOUBLE PRECISION' => 'N',
+		'SMALLFLOAT' => 'N',
+		'FLOAT' => 'N',
+		'FLOAT8' => 'N',
+		'NUMBER' => 'N',
+		'NUM' => 'N',
+		'NUMERIC' => 'N',
+		'MONEY' => 'N',
+		
+		## informix 9.2
+		'SQLINT' => 'E', 
+		'SQLSERIAL' => 'E', 
+		'SQLSMINT' => 'E', 
+		'SQLSMFLOAT' => 'N', 
+		'SQLFLOAT' => 'N', 
+		'SQLMONEY' => 'N', 
+		'SQLDECIMAL' => 'N', 
+		'SQLDATE' => 'F', 
+		'SQLVCHAR' => 'C', 
+		'SQLCHAR' => 'C', 
+		'SQLDTIME' => 'T', 
+		'SQLINTERVAL' => 'N', 
+		'SQLBYTES' => 'B', 
+		'SQLTEXT' => 'X' 
 		);
-		if (isset($typeMap[$tipo])) { 
+		if (isset($typeMap[$tipo])) {
 			return $typeMap[$tipo];
 		}
 		return 'Z';
 	}
 
 	/**
-	 * Dada una tabla retorna la SQL de carga de la tabla y sus campos cosméticos remontando referencias usando joins
+	 * Dada una tabla retorna la SQL de carga de la tabla y sus campos cosmï¿½ticos remontando referencias usando joins
 	 * @param string $tabla
 	 * @return array(sql, campo_clave, campo_descripcion)
 	 */
@@ -1072,7 +1082,7 @@ class toba_db
 			$tablas_analizadas[] = $tabla;			
 			$clave = $campo['fk_campo'];
 			$descripcion = $campo['fk_campo'];
-			//-- Busca cual es el campo descripción más 'acorde' en la tabla actual
+			//-- Busca cual es el campo descripciï¿½n mï¿½s 'acorde' en la tabla actual
 			$campos_tabla_externa = $this->get_definicion_columnas($tabla);
 			$candidatos_descripcion = array();
 			//ei_arbol($campos_tabla_externa, $tabla);
@@ -1095,7 +1105,7 @@ class toba_db
 	}	
 	
 	/**
-	 * Determina si la definición de un campo de una tabla es un campo descripción
+	 * Determina si la definiciï¿½n de un campo de una tabla es un campo descripciï¿½n
 	 * @param array $campo Definicion de un campo
 	 */
 	protected function es_campo_candidato_descripcion($campo)
