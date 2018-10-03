@@ -1,8 +1,8 @@
 <?php
 /**
- * Clase que se mantiene por compatibildad hacia atrás
+ * Clase que se mantiene por compatibildad hacia atrï¿½s
  * @package Componentes\Persistencia
- */	
+ */
 class toba_ap_tabla_db_s extends toba_ap_tabla_db
 {
 	final function  __construct($datos_tabla)
@@ -39,12 +39,15 @@ class toba_ap_tabla_db_s extends toba_ap_tabla_db
 
 	protected function get_select_col($col)
 	{
+		if (isset($this->_columnas[$col]) && isset($this->_columnas[$col]['tipo']) && $this->_columnas[$col]['tipo'] === 'F') { // convertir fecha a string cuando se hace la consulta
+			return "TO_CHAR(" . $this->_alias  . "." . $col . ", 'YYYY-MM-DD') $col";
+		}
 		return $this->_alias  . "." . $col;
 	}
 
 	protected function get_from_default()
 	{
-		return $this->agregar_schema($this->_tabla)  . ' as '. $this->_alias;
+		return $this->agregar_schema($this->_tabla)  . ' '. $this->_alias; // quita AS que no esta soportado en todos los motores
 	}
 }
 ?>

@@ -134,7 +134,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 
 	
 	/**
-	* Retorna true si la instalación es de producción (implementación)
+	* Retorna true si la instalaciï¿½n es de producciï¿½n (implementaciï¿½n)
 	*/
 	function es_produccion()
 	{
@@ -146,7 +146,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 	}
 	
 	/**
-	* Retorna true si la instalación esta vinculada con Arai-Usuarios
+	* Retorna true si la instalaciï¿½n esta vinculada con Arai-Usuarios
 	*/
 	function vincula_arai_usuarios()
 	{
@@ -388,7 +388,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 					$logger->warning("No pudo cambiarse la sesion postgres al schema '{$parametros['schema']}' porque el mismo no existe");
 				}
 			}
-			//Si existe el parametro del encoding, ponerlo por defecto para la conexión
+			//Si existe el parametro del encoding, ponerlo por defecto para la conexiï¿½n
 			if (isset($parametros['encoding'])) {
 				$db->set_encoding($parametros['encoding']);
 			}		
@@ -653,7 +653,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 	}
 	
 	/**
-	 * Cambia o agrega algunos parametros al archivo de información de la instalación
+	 * Cambia o agrega algunos parametros al archivo de informaciï¿½n de la instalaciï¿½n
 	 * @param array $datos clave => valor
 	 */
 	function cambiar_info_basica($datos)
@@ -723,7 +723,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 				throw new toba_error("INSTALACION: Los parametros definidos son incorrectos");	
 			}
 			// El motor es reconocido
-			$motores = array('postgres7', 'informix', 'mysql', 'odbc', 'sqlserver');
+			$motores = array('postgres7', 'informix', 'mysql', 'odbc', 'sqlserver', 'oracle');
 			if( ! in_array( $parametros['motor'], $motores ) ) {
 				throw new toba_error("INSTALACION: El motor tiene que pertenecer a la siguente lista: " . implode(', ',$motores) );	
 			}
@@ -849,10 +849,10 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 	//------------------------------------------------------------------------
 	
 	/**
-	 * Toma un proyecto de una instancia de un toba en un versión anterior e importa el mismo a esta versión
+	 * Toma un proyecto de una instancia de un toba en un versiï¿½n anterior e importa el mismo a esta versiï¿½n
 	 * La instancia origen se debe llamar igual que la destino
-	 * @param string $id_instancia Instancia origen/destino de la migración
-	 * @param string $id_proyecto Proyecto origen/destino de la migración
+	 * @param string $id_instancia Instancia origen/destino de la migraciï¿½n
+	 * @param string $id_proyecto Proyecto origen/destino de la migraciï¿½n
 	 * @param string $dir_toba_viejo Directorio del toba que contiene la instancia/proyecto a migrar
 	 * @param string $destino Directorio del toba que contiene el proyecto actual
 	 */
@@ -890,11 +890,11 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 			}
 			$bases_viejas = parse_ini_file($archivo_ini_bases, true);
 			if (! isset($bases_viejas[$id_base_instancia])) {
-				throw new toba_error("No se encuentra la definición de la instancia $id_base_instancia en el archivo $archivo_ini_bases");
+				throw new toba_error("No se encuentra la definiciï¿½n de la instancia $id_base_instancia en el archivo $archivo_ini_bases");
 			} 
 
 			//--- Incluir solo el proyecto a importar en la instancia
-			$this->manejador_interface->titulo("2.- Apuntando la instancia nueva a la de la versión anterior");
+			$this->manejador_interface->titulo("2.- Apuntando la instancia nueva a la de la versiï¿½n anterior");
 			$instancia->get_lista_proyectos_vinculados();
 			$instancia->set_proyectos_vinculados(array($id_proyecto));
 			$path_proyecto = (is_null($destino)) ? $instancia->get_path_proyecto($id_proyecto): $destino;			
@@ -905,7 +905,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 			$this->cargar_info_ini(true);
 
 			//--- Migrar la instancia vieja
-			$this->manejador_interface->titulo("3.- Migrando el proyecto de versión toba");
+			$this->manejador_interface->titulo("3.- Migrando el proyecto de versiï¿½n toba");
 
 			$instancia->get_db()->destruir();
 			$instancia->get_db(true);	//Refresca la base			
@@ -926,7 +926,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 				}
 				rename($dir_backup, $dir_original);
 			} else {
-				throw new toba_error('Imposible restaurar el estado previo a la migración');
+				throw new toba_error('Imposible restaurar el estado previo a la migraciï¿½n');
 			}
 			
 			//--- Agrega el proyecto a la instancia nueva (por si no estaba) y regenera la misma
@@ -946,7 +946,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 				$this->manejador_interface->titulo("Restaurando backup directorio instalacion del nuevo toba");	
 				if (file_exists($dir_original)) {
 					if (! toba_manejador_archivos::eliminar_directorio($dir_original)) {
-						throw new toba_error("Imposible restaurar backup desde '$dir_backup' hacia '$dir_original', deberá hacerlo manualmente.");
+						throw new toba_error("Imposible restaurar backup desde '$dir_backup' hacia '$dir_original', deberï¿½ hacerlo manualmente.");
 					}
 				}
 				rename($dir_backup, $dir_original);
@@ -957,8 +957,8 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 	
 	function migrar_version($version, $recursivo)
 	{
-		toba_logger::instancia()->debug("Migrando instalación hacia version ".$version->__toString());
-		$this->manejador_interface->mensaje("Migrando instalación.", false);
+		toba_logger::instancia()->debug("Migrando instalaciï¿½n hacia version ".$version->__toString());
+		$this->manejador_interface->mensaje("Migrando instalaciï¿½n.", false);
 		$version->ejecutar_migracion('instalacion', $this, null, $this->manejador_interface);
 		$this->manejador_interface->progreso_fin();
 		
@@ -975,7 +975,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 	{
 		$numero = $version->__toString();
 		file_put_contents(self::dir_base()."/VERSION", $numero );
-		toba_logger::instancia()->debug("Actualizada instalación a versión $numero");
+		toba_logger::instancia()->debug("Actualizada instalaciï¿½n a versiï¿½n $numero");
 	}
 	
 	/**
@@ -1005,7 +1005,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 		if (toba::config()->existe_valor('instalacion', null, 'araiCli_version_max')) {
 			$max = toba::config()->get_parametro('instalacion', null, 'araiCli_version_max');
 		}
-		return array($min, $max);       
+		return array($min, $max);
 	}
 }
 ?>
