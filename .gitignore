@@ -17,3 +17,4 @@ bin/validate-json
 temp/
 xlib
 www/siu/
+.idea
