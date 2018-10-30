@@ -1,6 +1,6 @@
 <?php
 /**
- * Driver de conexi?n con oracle
+ * Driver de conexión con oracle
  * @package Fuentes
  * @subpackage Drivers
  */
@@ -46,7 +46,7 @@ class toba_db_oracle extends toba_db
 		return $parametros;
 	}
 	/**
-	 * Determina que schema se utilizar? por defecto para la ejecuci?n de consultas, comandos y consulta de metadatos
+	 * Determina que schema se utilizará por defecto para la ejecución de consultas, comandos y consulta de metadatos
 	 * @param string $schema
 	 * @param boolean $ejecutar
 	 */
@@ -158,7 +158,7 @@ class toba_db_oracle extends toba_db
 	}
 
 	/**
-	 * @return boolean Devuelve true si hay una transacci?n abierta y false en caso contrario
+	 * @return boolean Devuelve true si hay una transacción abierta y false en caso contrario
 	 */
 	function transaccion_abierta()
 	{
@@ -185,11 +185,11 @@ class toba_db_oracle extends toba_db
 	
 	/**
 	*	Insert de datos desde un arreglo hacia una tabla. Requiere la extension original pgsql.
-	*	@param string $tabla Nombre de la tabla en la que se insertar?n los datos
-	*	@param array $datos Los datos a insertar: cada elemento del arreglo ser? un registro en la tabla.
+	*	@param string $tabla Nombre de la tabla en la que se insertarán los datos
+	*	@param array $datos Los datos a insertar: cada elemento del arreglo será un registro en la tabla.
 	*	@param string $delimitador Separador de datos de cada fila.
-	*	@param string $valor_nulo Cadena que se utlilizar? como valor nulo.
-	*	@return boolean Retorn TRUE en caso de ?xito o FALSE en caso de error.
+	*	@param string $valor_nulo Cadena que se utlilizará como valor nulo.
+	*	@return boolean Retorn TRUE en caso de éxito o FALSE en caso de error.
 	*/
 /*	function insert_masivo($tabla,$datos,$delimitador="\t",$valor_nulo="\\N") {
 		$puerto = ($this->puerto != '') ? "port={$this->puerto}": '';

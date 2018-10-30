@@ -82,7 +82,7 @@ function ef_combo_editable(id_form, etiqueta, obligatorio, colapsado, tamano, mo
 		var e = addEvent(this.input(), 'ontecla', callback); 
 		combo.attachEvent('onKeyPressed', e);
 
-		//-- El placeholder siempre va aï¿½n cuando tenga un estado seteado. Lo maneja HTML5.
+		//-- El placeholder siempre va aún cuando tenga un estado seteado. Lo maneja HTML5.
 		this._put_mensaje_ayuda();
 
 		//Caso solo_lectura de las cascadas
@@ -146,7 +146,7 @@ function ef_combo_editable(id_form, etiqueta, obligatorio, colapsado, tamano, mo
 	ef_combo_editable.prototype.proceso_tecla = function() {
 		//window['combo_editable_'+this._id_form];
 		var combo = this._get_combo();
-		//Reemplazo caracteres no vï¿½lidos
+		//Reemplazo caracteres no válidos
 		srch_txt_old = combo.getComboText();
 		//Si es '*' busco todo
 		this._buscar_todo = (srch_txt_old == '*');
@@ -244,7 +244,7 @@ function ef_combo_editable(id_form, etiqueta, obligatorio, colapsado, tamano, mo
 			//Si existe la seteo
 			this._get_combo().selectOption(indice,true,true);
 			return;
-		} else {//Si no estï¿½ valido si existe y la traigo
+		} else {//Si no está valido si existe y la traigo
 			this._setear_opcion(nuevo,false);
 			return;
 		} 
@@ -326,7 +326,7 @@ function ef_combo_editable(id_form, etiqueta, obligatorio, colapsado, tamano, mo
 		
 	/**
 	 * Oculta temporalmente el elemento y su etiqueta
-	 * @param {boolean} resetar Ademï¿½s de ocultar el elemento borra su estado o valor actual, por defecto false
+	 * @param {boolean} resetar Además de ocultar el elemento borra su estado o valor actual, por defecto false
 	 * @see #mostrar
 	 */
 	ef_combo_editable.prototype.ocultar = function(resetear) {
@@ -344,7 +344,7 @@ function ef_combo_editable(id_form, etiqueta, obligatorio, colapsado, tamano, mo
 	
 	/**
 	 * Muestra el elemento previamente ocultado
-	 * @param {boolean} resetar Ademï¿½s de ocultar el elemento borra su estado o valor actual
+	 * @param {boolean} resetar Además de ocultar el elemento borra su estado o valor actual
 	 * @see #ocultar
 	 */
 	ef_combo_editable.prototype.mostrar = function(mostrar, resetear) {
