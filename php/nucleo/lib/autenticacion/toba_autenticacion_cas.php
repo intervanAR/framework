@@ -129,16 +129,16 @@ class toba_autenticacion_cas extends toba_autenticacion implements toba_autentic
 
 		// Tipo de auth
 		if (toba::instalacion()->es_produccion() && $this->validar_servidor) {
-		    phpCAS::setCasServerCACert($this->archivo_certificado, $this->validar_cn);
-		} else {
+			phpCAS::setCasServerCACert($this->archivo_certificado, $this->validar_cn);
+		} else {		
 			phpCAS::setNoCasServerValidation();
 		}
 		
 		phpCAS::setServerLoginURL('');
 
-		/** Llamada principal al authentificaciï¿½n de CAS, si no estï¿½s
-		autenticado te redirecciona ahï¿½ adentro y no sigue ejecutando
-		Si pasa estï¿½ funciï¿½n significa que estï¿½s autenticado **/
+		/** Llamada principal al authentificación de CAS, si no estás
+		autenticado te redirecciona ahí adentro y no sigue ejecutando
+		Si pasa está función significa que estás autenticado **/
 		phpCAS::forceAuthentication();		
 	}
 	

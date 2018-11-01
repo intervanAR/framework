@@ -1,17 +1,17 @@
 <?php
 
 /**
- * El perfil de datos permite restringir los datos que surgen desde la base de datos en base a una dimensiï¿½n dada (carrera, sexo, dependencia, etc.)
- * El mï¿½todo filtrar analiza una consulta SQL dada, identificando las tablas que se relacionan con las dimensiones definidas en el proyecto y
- * agregando clausulas WHERE necesarias para filtrar las mismas. Por ejemplo si es una consulta SQL de personas, tenemos una dimensiï¿½n sexo y el usuario actual tiene definido
- * un perfil de datos por el valor Masculino, agregarï¿½ sexo='M' a las clausulas de la consulta.
+ * El perfil de datos permite restringir los datos que surgen desde la base de datos en base a una dimensión dada (carrera, sexo, dependencia, etc.)
+ * El método filtrar analiza una consulta SQL dada, identificando las tablas que se relacionan con las dimensiones definidas en el proyecto y
+ * agregando clausulas WHERE necesarias para filtrar las mismas. Por ejemplo si es una consulta SQL de personas, tenemos una dimensión sexo y el usuario actual tiene definido
+ * un perfil de datos por el valor Masculino, agregará sexo='M' a las clausulas de la consulta.
  *
  * Los perfiles de datos se definen en toba_usuarios (un usuario puede tener 0 o 1 perfil)
  * Las dimensiones se definen por el proyecto en toba_editor
  * 
  *  TODO  No soporta el uso de parentesis
  * @package Seguridad
- *
+ * 
  */
 class toba_perfil_datos
 {
@@ -134,7 +134,7 @@ class toba_perfil_datos
 	{
 		return $this->ids;
 	}
-
+	
 	/**
 	*	Indica si el perfil de datos del usuario posee restricciones
 	*	@return $value	boolean
@@ -183,17 +183,17 @@ class toba_perfil_datos
 
 
 	/**
-	* Retorna las restricciones aplicadas sobre una dimensiï¿½n especï¿½fica
+	* Retorna las restricciones aplicadas sobre una dimensión específica
 	* @param string $nombre Nombre de la dimension
 	* @return array Arreglo de restricciones si aplica, sino null
 	*/
 	function get_restricciones_dimension($fuente, $nombre)
-	{
+	{		
 		$perfiles = $this->get_restricciones_dimension_agrupado_perfil($fuente, $nombre);
 		if (is_null($perfiles)) {
 			return;
-		}
-
+		}			
+		
 		$valores = array();
 		foreach($perfiles as $dimension) {
 			foreach($dimension as $perfil) {
@@ -205,10 +205,10 @@ class toba_perfil_datos
 			}
 		}
 		return $valores;
-	}
-
+	}	
+	
 	/**
-	* Retorna las restricciones aplicadas sobre una dimensiï¿½n especï¿½fica agrupadas por perfil de datos
+	* Retorna las restricciones aplicadas sobre una dimensión específica agrupadas por perfil de datos
 	* @param string $nombre Nombre de la dimension
 	* @return array Arreglo de restricciones si aplica, sino null
 	 */
@@ -283,7 +283,7 @@ class toba_perfil_datos
 		/*$parser = new PHPSQLParser\PHPSQLParser();
 		$parsed = $parser->parse($sql);
 		ei_arbol($parsed);*/
-
+		
 		if (!$fuente_datos) $fuente_datos = toba::proyecto()->get_parametro('fuente_datos');
 		if ($this->posee_restricciones($fuente_datos)) {
 			if ($this->hay_combinaciones_de_querys($sql)) {
@@ -309,7 +309,7 @@ class toba_perfil_datos
 		$this->operadores_asimetricos = array();
 		$sql = $this->quitar_comentarios_sql($sql);
 		//-- 1 -- Busco GATILLOS en el SQL
-		$tablas_gatillo_encontradas = $this->buscar_tablas_gatillo_en_sql( $sql, $fuente_datos );
+		$tablas_gatillo_encontradas = $this->buscar_tablas_gatillo_en_sql( $sql, $fuente_datos );		
 		if (! empty($gatillos_exclusivos)) {
 			$keys_e = array_keys($tablas_gatillo_encontradas);
 			foreach($keys_e as $key) {					//Elimino todas aquellas tablas que no esten en los gatillos requeridos
@@ -319,7 +319,7 @@ class toba_perfil_datos
 			}			
 		}
 		//-- 2 -- Busco las dimensiones implicadas
-		$dimensiones_implicadas = $this->reconocer_dimensiones_implicadas( array_keys($tablas_gatillo_encontradas), $fuente_datos );
+		$dimensiones_implicadas = $this->reconocer_dimensiones_implicadas(array_keys($tablas_gatillo_encontradas), $fuente_datos);
 		//-- 3 -- Obtengo la clausula WHERE correspondiente a cada dimension
 		foreach( $dimensiones_implicadas as $dimension => $tabla ) {
 			if(isset($dimensiones_desactivar) && in_array($dimension,$dimensiones_desactivar)) continue;
@@ -446,20 +446,20 @@ class toba_perfil_datos
 		$columnas_matcheo = array_map('trim', $columnas_matcheo);
 		foreach($restricciones as $restric) {
 			$claves = array();
-		if(count($columnas_matcheo) == 1) {		//-- COMPARACION simple
-			foreach($restric as $clave) {
-				$claves[] = $clave[0];
-			}
+			if(count($columnas_matcheo) == 1) {		//-- COMPARACION simple
+				foreach($restric as $clave) {
+					$claves[] = $clave[0];
+				}
 				$where[] = $alias_tabla . '.' . $columnas_matcheo[0] . ' IN (\'' . (implode('\',\'',$claves)) . '\')';
-		} else {								//-- COMPARACION multicolumna
-			foreach($restric as $clave) {
-				$claves[] = "('" . implode("','",$clave) . "')";
-			}
-			foreach($columnas_matcheo as $col) {
-				$columnas[] = $alias_tabla . '.' . $col;
-			}
+			} else {								//-- COMPARACION multicolumna
+				foreach($restric as $clave) {
+					$claves[] = "('" . implode("','",$clave) . "')";
+				}
+				foreach($columnas_matcheo as $col) {
+					$columnas[] = $alias_tabla . '.' . $col;
+				}
 				$where[] =  "(" . implode(", ",$columnas) . ") IN (" . (implode(', ',$claves)) . ")";
-		}
+			}			
 		}
 		$where_final = implode(' OR ', $where);
 		return " ( " . $where_final . " ) ";
@@ -563,7 +563,7 @@ class toba_perfil_datos
 					$tabla = $temp[0];
 				}
 				$tabla = strtolower($tabla);
-				if ( in_array($tabla, $gatillos) ) {	
+				if ( in_array($tabla, $gatillos) ) {
 					//La tabla pertenece a una dimension
 					if (isset($temp[2]) && strtolower($temp[1]) == 'as') {			//Que se trate de un AS para el alias
 						$alias = $temp[2];

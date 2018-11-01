@@ -1,6 +1,6 @@
 <?php
 /**
- * Esta clase fue y serï¿½ generada automï¿½ticamente. NO EDITAR A MANO.
+ * Esta clase fue y será generada automáticamente. NO EDITAR A MANO.
  * @ignore
  */
 class toba_autoload 

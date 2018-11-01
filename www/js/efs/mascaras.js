@@ -44,7 +44,7 @@ mascara.prototype.getKeyPress = function (e, o, _u){
 	return true;
 };
 
-//Permite ajustar el valor previo a la ejecuciï¿½n al key press
+//Permite ajustar el valor previo a la ejecución al key press
 mascara.prototype.pre_evento_tecla = function (evento, objeto) {
 	return true;
 };
@@ -104,7 +104,7 @@ def.format = function (s, d, inicial){
 };
 
 
-//Permite ajustar el valor previo a la ejecuciï¿½n al key press
+//Permite ajustar el valor previo a la ejecución al key press
 def.pre_evento_tecla = function (evento, objeto) {
 	var xe = new qEvent(evento);
 	if (! xe.isDelete()) {
@@ -136,7 +136,7 @@ def.onKeyPress = function(valor, borro) {
 def.validar_mascara = function() {
 	var er_mask = new RegExp('^[\\' + this.moneda + ']?((\\' + this.moneda + '?[\\+-]?([0#]{1,3},)?[0#]*(\\' + this.dec + '[0#]*)?)|([\\+-]?\\([\\+-]?([0#]{1,3},)?[0#]*(\\' + this.dec + '[0#]*)?\\)))$');
 	if( ! er_mask.test(this._mascara) ) {
-		return this.throwError(1, "Mï¿½scara invï¿½lida.");
+		return this.throwError(1, "Máscara inválida.");
 	}
 };
 
@@ -153,7 +153,7 @@ def.setNumber = function(_v, _d){
 	//Asegura que solamente hay un punto decimal
 	v = v.replace(new RegExp('\\' + this.dec), "d").replace(new RegExp('\\' + this.dec, 'g'), "").replace(/d/, this.dec);
 
-	//ï¿½Se borro?
+	//¿Se borro?
 	if( (_d === true) && (v.length == this.strippedValue.length) ) {
 		v = v.substring(0, v.length-1);
 	}
@@ -169,8 +169,8 @@ def.setNumber = function(_v, _d){
 	}
 	this.strippedValue = v;
 
-	//ï¿½Es un nï¿½mero?
-	if( v.length === 0 )	{//Si es vacï¿½o, retornar vacï¿½o
+	//¿Es un número?
+	if( v.length === 0 )	{//Si es vacío, retornar vacío
 		return v;
 	}
 	var vn = Number(v);
@@ -185,7 +185,7 @@ def.setNumber = function(_v, _d){
 	var v_despues_decimal = (v.indexOf(this.dec) > -1) ? v.split(this.dec)[1] : "";
 	var _vd = v_despues_decimal;
 
-	// Esta comparaciÃ³n permite considerar al -0 como negativo
+	// Esta comparación permite considerar al -0 como negativo
 	var isNegative = 1 / vn < 0;
 
 	// check for masking operations
@@ -239,7 +239,7 @@ def.setNumber = function(_v, _d){
 		}
 	}
 
-	//ï¿½Necesita poner puntos en los miles?
+	//¿Necesita poner puntos en los miles?
 	if( /[#0]+,[#0]{3}/.test(masc_limpia) ){
 		// add the commas as the place holder
 		var x = [], i=0, n=Number(v_antes_decimal);
@@ -358,7 +358,7 @@ mascara_fecha.prototype.partir_fecha = function(fecha) {
 	var res = [];
 	var acumulado = '';
 	for (i=0; i<fecha.length; i++) {
-		if (isNaN(parseInt(fecha.charAt(i), 10))) {		//ï¿½Es numero?
+		if (isNaN(parseInt(fecha.charAt(i), 10))) {		//¿Es numero?
 			if (acumulado !== '') {
 				res.push(acumulado);
 				acumulado = '';
