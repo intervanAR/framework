@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba1c22ba2265ed6a8aa8e8b5c28e1643",
+    "content-hash": "4d150e89af5b43c5bc528ed7742e61e5",
     "packages": [
         {
             "name": "dapphp/securimage",
@@ -739,16 +739,16 @@
         },
         {
             "name": "markbaker/complex",
-            "version": "1.4.6",
+            "version": "1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MarkBaker/PHPComplex.git",
-                "reference": "a78d82ae4e682c3809fc3023d1b0ce654f6ab12b"
+                "reference": "1ea674a8308baf547cbcbd30c5fcd6d301b7c000"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/a78d82ae4e682c3809fc3023d1b0ce654f6ab12b",
-                "reference": "a78d82ae4e682c3809fc3023d1b0ce654f6ab12b",
+                "url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/1ea674a8308baf547cbcbd30c5fcd6d301b7c000",
+                "reference": "1ea674a8308baf547cbcbd30c5fcd6d301b7c000",
                 "shasum": ""
             },
             "require": {
@@ -830,7 +830,7 @@
                 "complex",
                 "mathematics"
             ],
-            "time": "2018-07-31T08:38:40+00:00"
+            "time": "2018-10-13T23:28:42+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -1248,16 +1248,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "125f462a718956f37d81305ca0df4f17cef0f3b9"
+                "reference": "2dfd06c59825914a1a325f2a2ed13634b9d8c411"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/125f462a718956f37d81305ca0df4f17cef0f3b9",
-                "reference": "125f462a718956f37d81305ca0df4f17cef0f3b9",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/2dfd06c59825914a1a325f2a2ed13634b9d8c411",
+                "reference": "2dfd06c59825914a1a325f2a2ed13634b9d8c411",
                 "shasum": ""
             },
             "require": {
@@ -1290,7 +1290,7 @@
                 "dompdf/dompdf": "Option for rendering PDF with PDF Writer",
                 "jpgraph/jpgraph": "Option for rendering charts, or including charts with PDF or HTML Writers",
                 "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
-                "tecnick.com/tcpdf": "Option for rendering PDF with PDF Writer"
+                "tecnickcom/tcpdf": "Option for rendering PDF with PDF Writer"
             },
             "type": "library",
             "autoload": {
@@ -1331,7 +1331,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2018-08-06T02:58:06+00:00"
+            "time": "2018-10-21T10:04:54+00:00"
         },
         {
             "name": "psr/http-message",
@@ -1480,16 +1480,16 @@
         },
         {
             "name": "robrichards/xmlseclibs",
-            "version": "dev-master",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robrichards/xmlseclibs.git",
-                "reference": "93f8c07976b36b6050ab341ab5850484dc897ce0"
+                "reference": "1f4de0c0d121922aafd8c62c2a9f5e528830cf38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robrichards/xmlseclibs/zipball/93f8c07976b36b6050ab341ab5850484dc897ce0",
-                "reference": "93f8c07976b36b6050ab341ab5850484dc897ce0",
+                "url": "https://api.github.com/repos/robrichards/xmlseclibs/zipball/1f4de0c0d121922aafd8c62c2a9f5e528830cf38",
+                "reference": "1f4de0c0d121922aafd8c62c2a9f5e528830cf38",
                 "shasum": ""
             },
             "require": {
@@ -1514,7 +1514,7 @@
                 "xml",
                 "xmldsig"
             ],
-            "time": "2018-03-23T11:10:08+00:00"
+            "time": "2018-09-27T13:24:13+00:00"
         },
         {
             "name": "rospdf/pdf-php",
@@ -1587,16 +1587,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "f4747c0af60fcab9759cc5347b5017ea589ce738"
+                "reference": "b3a040ec186f4a3749228b8c13642c5295fc451b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/f4747c0af60fcab9759cc5347b5017ea589ce738",
-                "reference": "f4747c0af60fcab9759cc5347b5017ea589ce738",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/b3a040ec186f4a3749228b8c13642c5295fc451b",
+                "reference": "b3a040ec186f4a3749228b8c13642c5295fc451b",
                 "shasum": ""
             },
             "require": {
@@ -1605,7 +1605,7 @@
                 "ext-zlib": "*",
                 "php": ">=5.4",
                 "psr/log": "~1.0",
-                "robrichards/xmlseclibs": "dev-master#93f8c07976b36b6050ab341ab5850484dc897ce0 as 3.0.2"
+                "robrichards/xmlseclibs": "^3.0"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
@@ -1640,20 +1640,20 @@
                 }
             ],
             "description": "SAML2 PHP library from SimpleSAMLphp",
-            "time": "2018-09-19T08:41:29+00:00"
+            "time": "2018-09-27T14:09:06+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "1.16.1",
+            "version": "1.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp.git",
-                "reference": "5c00715ec5d83d717ef67c0a44a5d39ee932d35a"
+                "reference": "bf9e21146df2530ed2e79041136c2f8549010275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/5c00715ec5d83d717ef67c0a44a5d39ee932d35a",
-                "reference": "5c00715ec5d83d717ef67c0a44a5d39ee932d35a",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/bf9e21146df2530ed2e79041136c2f8549010275",
+                "reference": "bf9e21146df2530ed2e79041136c2f8549010275",
                 "shasum": ""
             },
             "require": {
@@ -1669,8 +1669,8 @@
                 "gettext/gettext": "^3.5",
                 "jaimeperez/twig-configurable-i18n": "^1.2",
                 "php": ">=5.4",
-                "robrichards/xmlseclibs": "dev-master#93f8c07976b36b6050ab341ab5850484dc897ce0 as 3.0.2",
-                "simplesamlphp/saml2": "~3.2",
+                "robrichards/xmlseclibs": "^3.0",
+                "simplesamlphp/saml2": "~3.2.2",
                 "twig/twig": "~1.0",
                 "whitehat101/apr1-md5": "~1.0"
             },
@@ -1716,7 +1716,7 @@
                 "sp",
                 "ws-federation"
             ],
-            "time": "2018-09-07T14:06:02+00:00"
+            "time": "2018-09-28T13:06:14+00:00"
         },
         {
             "name": "siu-toba/jwt-util",
@@ -1825,17 +1825,11 @@
         },
         {
             "name": "siu-toba/rest",
-            "version": "v2.0.2",
+            "version": "dev-intervan",
             "source": {
                 "type": "git",
-                "url": "https://github.com/SIU-Toba/rest.git",
-                "reference": "6b015ee46c713920023df3615bc9b645d3ec1713"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SIU-Toba/rest/zipball/6b015ee46c713920023df3615bc9b645d3ec1713",
-                "reference": "6b015ee46c713920023df3615bc9b645d3ec1713",
-                "shasum": ""
+                "url": "https://github.com/intervanAR/rest.git",
+                "reference": "03d13441d6bb0c0d67687cd8bbfec76334931f44"
             },
             "require": {
                 "doctrine/cache": "~1.4",
@@ -1852,13 +1846,12 @@
                     "SIUToba\\rest\\": "src/SIUToba/rest"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "SIU"
             ],
             "description": "Libreria para servicios REST",
             "homepage": "http://toba.siu.edu.ar",
-            "time": "2017-10-06T20:37:32+00:00"
+            "time": "2018-11-05T18:44:59+00:00"
         },
         {
             "name": "siu-toba/services_json",
@@ -2100,7 +2093,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -2158,16 +2151,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.15",
+            "version": "v3.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "c2f4812ead9f847cb69e90917ca7502e6892d6b8"
+                "reference": "640b6c27fed4066d64b64d5903a86043f4a4de7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/c2f4812ead9f847cb69e90917ca7502e6892d6b8",
-                "reference": "c2f4812ead9f847cb69e90917ca7502e6892d6b8",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/640b6c27fed4066d64b64d5903a86043f4a4de7f",
+                "reference": "640b6c27fed4066d64b64d5903a86043f4a4de7f",
                 "shasum": ""
             },
             "require": {
@@ -2213,7 +2206,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-08-10T07:34:36+00:00"
+            "time": "2018-10-02T16:33:53+00:00"
         },
         {
             "name": "twig/extensions",
@@ -2884,16 +2877,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.1.4",
+            "version": "v4.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "86cdb930a6a855b0ab35fb60c1504cb36184f843"
+                "reference": "3e83acef94d979b1de946599ef86b3a352abcdc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/86cdb930a6a855b0ab35fb60c1504cb36184f843",
-                "reference": "86cdb930a6a855b0ab35fb60c1504cb36184f843",
+                "url": "https://api.github.com/repos/symfony/process/zipball/3e83acef94d979b1de946599ef86b3a352abcdc9",
+                "reference": "3e83acef94d979b1de946599ef86b3a352abcdc9",
                 "shasum": ""
             },
             "require": {
@@ -2929,13 +2922,14 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-08-03T11:13:38+00:00"
+            "time": "2018-10-14T20:48:13+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
         "ircmaxell/random-lib": 20,
+        "siu-toba/rest": 20,
         "siu-toba/ssl-cert-utils": 20,
         "guiguiboy/php-cli-progress-bar": 20,
         "ioncube/php-openssl-cryptor": 20,
