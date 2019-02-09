@@ -62,7 +62,8 @@ class toba_http
 		header("Content-Length: $longitud"); 
 		header("Content-Disposition: attachment; filename=$archivo"); 
 		header("Pragma: no-cache"); 
-		header("Expires: 0"); 
+		header("Expires: 0");
+        header("Refresh: 0; url=#");
 
 	} 
 	
