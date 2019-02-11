@@ -29,7 +29,16 @@ class toba_vista_jasperreports
 		$this->temp_salida = toba::proyecto()->get_path_temp().'/'.uniqid('jasper_').'.pdf';		
 		$this->cargar_jasper();
 		/*Creamos una variable tipo arreglo que contendrá los parámetros */
-		$this->parametros = new Java("java.util.HashMap");		
+		$this->parametros = new Java("java.util.HashMap");
+
+        // Si el entorno es desarrollo / tests
+        //   Para enviar el archivo al cliente y poder descargarlo automáticamente
+        // Si el entorno el producción
+        //   Se utiliza Content-Disposition: attachment
+        //   Para que siempre salte la ventana de "Guardar como" al momento de descargar
+        //   un archivo.
+        $this->tipo_descarga =
+            toba::instalacion()->es_produccion() == 1 ? 'attachment' : 'inline';
 	}
 	
 	/**
@@ -378,24 +387,27 @@ class toba_vista_jasperreports
 	 */
 	protected function configurar_bd(&$conexion)
 	{
-		$params = $conexion->get_parametros();
-		//Creamos la conexión JDBC
-		$con = new Java("org.altic.jasperReports.JdbcConnection");
-		//Seteamos el driver jdbc
-		$con->setDriver("org.postgresql.Driver");
-		$port = (isset($params['puerto'])) ? ":".$params['puerto'] : '';
-		$con->setConnectString("jdbc:postgresql://".$params['profile'].$port.'/'.$params['base']);
-		//Especificamos los datos de la conexión, cabe aclarar que esta conexion es la del servidor de producción
-		$con->setUser($params['usuario']);
-		$con->setPassword($params['clave']);
-		$con1 = $con->getConnection();
-		if (isset($params['schema'])) {
-			$sql = "SET search_path = \"{$params['schema']}\", \"public\";";			
-			$stmt = $con1->createStatement();
-			$stmt->executeUpdate($sql);
-			toba::logger()->debug("Seteo el esquema por defecto para el reporte: $sql");			
-		}
-		return $con1;
+        $params = $conexion->get_parametros();
+        //Creamos la conexión JDBC
+        $con = new Java("org.altic.jasperReports.JdbcConnection");
+        //Seteamos el driver jdbc
+        $con->setDriver("oracle.jdbc.driver.OracleDriver");
+
+        $bases_ini = toba_dba::get_bases_definidas();
+        $proyecto = toba::proyecto()->get_id();
+        $base = $bases_ini["desarrollo $proyecto $proyecto"]['base'];
+        $profile = $bases_ini["desarrollo $proyecto $proyecto"]['profile'];
+        $puerto = $bases_ini["desarrollo $proyecto $proyecto"]['puerto'];
+        $usuario = $bases_ini["desarrollo $proyecto $proyecto"]['usuario'];
+        $clave = $bases_ini["desarrollo $proyecto $proyecto"]['clave'];
+
+        $con->setConnectString("jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(HOST=$profile)(PROTOCOL=tcp)(PORT=$puerto))(CONNECT_DATA=(SERVICE_NAME=$base)))");
+
+        // Especificamos los datos de la conexión, cabe aclarar que esta conexion es la del servidor de producción
+        $con->setUser($usuario);
+        $con->setPassword($clave);
+
+        return $con->getConnection();
 	}
 	
 	//------------------------------------------------------------------------
