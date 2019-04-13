@@ -4,7 +4,7 @@ class toba_config
 	protected $basic_files = array( 'instalacion' => 'instalacion.ini' ,
 							'fuentes' => array('bases' => 'bases.ini', 'usuarios' => 'conexiones.ini') , 
 							'rdi' => 'rdi.ini', 
-							'idp' => array('cas' => 'cas.ini' , 'openid' => 'openid.ini' ,  'saml' =>'saml.ini', 'onelogin' => 'saml_onelogin.ini'), 
+							'idp' => array('ldap' => 'ldap.ini', 'cas' => 'cas.ini' , 'openid' => 'openid.ini' ,  'saml' =>'saml.ini', 'onelogin' => 'saml_onelogin.ini'),
 							'smtp' => 'smtp.ini',
 							'web_server' => 'web_server.ini'
 							);
