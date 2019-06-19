@@ -797,7 +797,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/intervanAR/firebase-tokens-php.git",
-                "reference": "51fc1c6da4f55f281661062e23cd7a94b62f7d78"
+                "reference": "41a4bd6231faeaa5a763810d175068d003fee8c8"
             },
             "require": {
                 "fig/http-message-util": "^1.1",
@@ -840,7 +840,7 @@
                 "google",
                 "token"
             ],
-            "time": "2019-06-19T00:21:07+00:00"
+            "time": "2019-06-19T17:35:32+00:00"
         },
         {
             "name": "lcobucci/jwt",

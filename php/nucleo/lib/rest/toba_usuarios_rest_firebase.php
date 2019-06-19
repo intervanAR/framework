@@ -19,9 +19,9 @@ class toba_usuarios_rest_firebase extends validador_jwt
 	function __construct(\toba_modelo_proyecto $proyecto)
 	{
         $this->modelo_proyecto = $proyecto;
-        $keyStore = new HttpKeyStore(null, null, $this->keys_urls);
         $this->cargar_ini_firebase();
 
+        $keyStore = new HttpKeyStore(null, null, $this->keys_urls);
         $this->verifier = new Verifier($this->proyecto_id, $keyStore, null, $this->issuers);
     }
 

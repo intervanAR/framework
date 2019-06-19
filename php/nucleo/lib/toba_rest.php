@@ -162,7 +162,7 @@ class toba_rest
 		}
 
 		// hay que priorizar, basic y digest (si existe alguno) hacen redirect primero
-		$order = array('ssl', 'jwt', 'api_key', 'toba', 'digest', 'basic');
+        $order = array('ssl', 'jwt', 'firebase', 'api_key', 'toba', 'digest', 'basic');
 		$autenticaciones = array_intersect($order, $autenticaciones);
 
 		return $autenticaciones;
