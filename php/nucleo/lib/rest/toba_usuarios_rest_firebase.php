@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__.'/../../../../vendor/autoload.php';
-
 use SIUToba\rest\seguridad\autenticacion\validador_jwt;
 use Firebase\Auth\Token\Verifier;
 use Firebase\Auth\Token\HttpKeyStore;
