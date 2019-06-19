@@ -13,6 +13,10 @@
             "url": "https://github.com/intervanAR/rest.git"
         },
         {
+            "type": "git",
+            "url": "https://github.com/intervanAR/firebase-tokens-php.git"
+        },
+        {
             "type": "composer",
             "url": "https://satis.siu.edu.ar"
         }
@@ -41,7 +45,8 @@
         "siu/rdi": "~0.9",
         "vlucas/phpdotenv": "~2.0",
         "ioncube/php-openssl-cryptor": "dev-master",
-        "psr/log": "^1.0"
+        "psr/log": "^1.0",
+        "kreait/firebase-tokens": "dev-intervan"
     },
     "require-dev": {
         "simpletest/simpletest": "~1.1", 

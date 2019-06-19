@@ -117,6 +117,10 @@ class toba_rest
 					$certificados = new toba_usuarios_rest_jwt($modelo_proyecto);
 					$metodos[] = new autenticacion\autenticacion_jwt($certificados);
 					break;
+				case 'firebase':
+					$certificados = new toba_usuarios_rest_firebase($modelo_proyecto);
+					$metodos[] = new autenticacion\autenticacion_jwt($certificados);
+					break;
 				case 'oauth2':
 					$conf = $this->get_conf();
 					$conf_auth = $conf->get('oauth2');					
