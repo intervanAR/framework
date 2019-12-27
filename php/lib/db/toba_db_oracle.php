@@ -58,7 +58,7 @@ class toba_db_oracle extends toba_db
 		return $parametros;
 	}
 	/**
-	 * Determina que schema se utilizará por defecto para la ejecuciï¿½n de consultas, comandos y consulta de metadatos
+	 * Determina que schema se utilizará por defecto para la ejecución de consultas, comandos y consulta de metadatos
 	 * @param string $schema
 	 * @param boolean $ejecutar
 	 */
