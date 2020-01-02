@@ -9,11 +9,13 @@ class toba_db_oracle extends toba_db
 	protected $cache_metadatos = array(); //Guarda un cache de los metadatos de cada tabla
 	protected $schema;
 	protected $transaccion_abierta = false;
+	protected $charset;
 	
 	
 	function __construct($profile, $usuario, $clave, $base, $puerto)
 	{
 		$this->motor = "oracle";
+		$this->charset = "WE8ISO8859P1";
 		parent::__construct($profile, $usuario, $clave, $base, $puerto);
 		//$this->setear_datestyle_iso();
 	}
@@ -32,11 +34,21 @@ class toba_db_oracle extends toba_db
             $this->set_numericstyle_iso();
 	}
 
+	/**
+	*	Cierra la conexion actual y crea una nueva conexion a la base
+	*	@throws toba_error_db en caso de error
+	*/
+	function reconectar()
+	{
+		$this->destruir();
+		$this->conectar();
+		$this->set_schema($this->get_schema());
+	}
+
 	function get_dsn()
 	{
 		//return "oci:dbname=//{$this->profile}:{$this->puerto}/{$this->base}";	
-                return 'oci:dbname=//'.$this->profile.':'.$this->puerto.'/'.$this->base.';charset=WE8ISO8859P1';
-                
+        return 'oci:dbname=//'.$this->profile.':'.$this->puerto.'/'.$this->base.';charset='.$this->charset;     
 	}
 
 	function get_parametros()
@@ -81,11 +93,11 @@ class toba_db_oracle extends toba_db
 		}
 	}
 
-	/* No implementado en Oracle
-	function set_encoding($encoding, $ejecutar = true)
+	function set_encoding($encoding)
 	{
+		$this->charset = $encoding;
+		$this->reconectar();
 	}
-	*/
 	
 	function set_datestyle_iso()
 	{
