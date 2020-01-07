@@ -21,7 +21,7 @@ class toba_tp_normal extends toba_tp_basico_titulo
 	{
 		$this->menu = toba::menu();
 	}
-		
+	
 	protected function comienzo_cuerpo()
 	{
 		parent::comienzo_cuerpo();

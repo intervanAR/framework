@@ -816,7 +816,7 @@ class toba_ei_pantalla extends toba_ei
 		}
 		if (! empty($restantes)) {
 			$faltan = implode(', ', $restantes);
-			throw new toba_error_def($this->get_txt(). " Template de impresiï¿½n incompleto, falta incluir las siguientes dependencias: $faltan");
+			throw new toba_error_def($this->get_txt(). " Template de impresión incompleto, falta incluir las siguientes dependencias: $faltan");
 		}
 	}
 	

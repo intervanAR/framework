@@ -92,7 +92,7 @@ class toba_evento_usuario extends toba_boton
 	
 	/**
 	 * El evento predeterminado si se encuentra en botonera se dispara al presionar la tecla ENTER.
-	 * En caso de existir mï¿½s de uno en una pï¿½gina el browser utiliza el primero en el orden del fuente HTML.
+	 * En caso de existir más de uno en una página el browser utiliza el primero en el orden del fuente HTML.
 	 */
 	function es_predeterminado()
 	{

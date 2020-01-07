@@ -105,7 +105,7 @@ class toba_proyecto
 			return constant(self::prefijo_punto_acceso.$id);
 		} elseif (isset($this->memoria[$id])) {
 			return $this->memoria[$id];
-		} elseif (toba::config()->existe_valor('proyecto', $seccion, $parametro)) {			
+		} elseif (toba::config()->existe_valor('proyecto', $seccion, $parametro)) {
 			return toba::config()->get_parametro('proyecto', $seccion, $parametro);
 		} else {
 			if( array_key_exists($id, $this->memoria)) {

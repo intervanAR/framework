@@ -3,6 +3,114 @@
 ## CHANGELOG
 
 [CURRENT](https://github.com/SIU-Toba/framework/compare/master...develop)
+
+[3.3.0](https://github.com/SIU-Toba/framework/releases/tag/v3.3.0) (2019-12-27)
+- Se fija como version minima de PHP 7.3.0
+- Se actualiza el item de login en toba_usuarios y toba_referencia, tambien se eliminan objetos huerfanos
+- Se agrega FK a la tabla apex_grupo_acc_restriccion_funcional
+- Se compatibiliza el mecanismo de actualizacion de secuencias y recuperacion de definicion de tablas con Postgresql 12
+- Se actualizan los siquientes paquetes:
+    * symfony/yaml: v4.4
+    * guzzlehttp/guzzle: v6.5
+    * michelf/php-markdown: v1.9
+    * phpmailer/phpmailer: v6.1
+    * phpoffice/phpspreadsheet: v1.10
+    * vlucas/dotenv: v3.6
+    * psr/log: v1.1
+    * siu/manejador-salida-toba: v1.1
+    * simpletest/simpletest: v1.2
+- Se brinda la posibilidad de definir si la salida de una vista se enviara inline o como adjunto
+- Se actualiza la interface del tipo de pagina popup para compatibilizar con los cambios en el manejador de salida
+- Se agrega la posibilidad de cambiar el pwd de un usuario determinado via comando de consola
+- Se agrega la posibilidad de marcar la instalacion para solicitar un segundo factor luego de loguear con un IDP
+- Se eliminan los assets correspondientes a Yahoo/YUI por cuestiones de seguridad y el menu basado en las mismas
+- Las membresias de perfiles funcionales se exportan en un archivo separado en una instalacion de produccion
+- Se actualiza el paquete siu/interfaces-manejador-salida-toba @v1.2 por bugfixes (rompe BC)
+- La exportacion via toba_vista_excel ahora tendra el formato xlsx
+- Se simplifica tratamiento de ef_fieldset en el formulario
+- Se pasa el paquete siu/rdi a suggested
+
+[3.2.10](https://github.com/SIU-Toba/framework/releases/tag/v3.2.10) (2019-11-25)
+- Fix a la desactivacion de eventos (con manejador-bootstrap)
+- Se actualizan los paquetes:
+  * robrichards/xmlseclibs @v3.0.4 (PR#67)
+  * phpoffice/phpspreadsheet @1.8.0 (PR#68)
+- Se permite fijar el save_handler para las sessiones via variable de entorno (PR#66)
+- Se activa el menu via appLauncher al invocar la sincronizacion con SIU-Arai (PR#63)
+- Se incorpora el parametro 'usa_proxy_vars' en saml_onelogin.ini para marcar cuando nos encontramos detras de un proxy (PR#62)
+- Se setea el header content-disposition para la descarga en la vista JasperReports(PR#60)
+
+[3.2.9](https://github.com/SIU-Toba/framework/releases/tag/v3.2.9) (2019-10-18)
+- Actualiza la version del paquete siu-app-launcher@1.0.4
+- Implementa modo no interactivo para la creacion del usuario admin de la instalacion
+
+[3.2.8](https://github.com/SIU-Toba/framework/releases/tag/v3.2.8) (2019-10-09)
+- Se chequea la existencia de la carpeta node_modules en el script que instala assets
+- Se agregan opciones nuevas al archivo smtp.ini
+- Se agrega comando para recompilar unicamente perfiles funcionales
+- Se agrega un comando especifico para verificar existencia de la instancia Toba
+
+[3.2.7](https://github.com/SIU-Toba/framework/releases/tag/v3.2.7) (2019-09-19)
+- Se agrega posibilidad de especificar el encoding cliente al momento de registrar la base de datos
+- Se corrige tamaño de imagenes en el selector de toba_editor (credits lcassettai)
+- Se permite utilizar un URI que no termine en rest para la documentacion de la API
+
+[3.2.6](https://github.com/SIU-Toba/framework/releases/tag/v3.2.6) (2019-08-16)
+- Se adelanta la carga de jquery y derivados
+- Se incorpora la version del proyecto como atributo "version" de las provision del mismo
+- Se agrega toba_modelo_instalacion al esquema de configuraciones via toba_config
+
+[3.2.5](https://github.com/SIU-Toba/framework/releases/tag/v3.2.5) (2019-08-06)
+- Bugfix en la lectura del archivo de configuracion para ldap
+
+[3.2.4](https://github.com/SIU-Toba/framework/releases/tag/v3.2.4) (2019-06-28)
+- Bugfix en el editor de columnas externas del DT en el proyecto toba_editor
+- Bugfix en toba_sincronizador_archivos para evitar warnings durante la exportacion de metadatos
+
+[3.2.3](https://github.com/SIU-Toba/framework/releases/tag/v3.2.3) (2019-06-04)
+- Bugfix en toba_varios::array_a_latin1 y toba_varios::array_a_utf8
+- Bugfix en regeneracion al eliminar los perfiles funcionales editables
+- Fix en toba_rest cuando se setea la versión de la api a partir de la del proyecto
+- Nueva opción `--usuario-email-admin` que permite especificar el email para la cuenta administrativa al momento de instalar el framework
+- Update de libreria:
+   * jquery: v3.4
+- Reincorpora paquete "siu/arai-json-migrator" eliminado por error
+- Bugfix en toba_usuarios al generar la clave aleatoria, retornaba bytes en lugar de un string
+- Agrega metodo a toba_usuario_basico para recuperar atributos del token saml
+- Agrega excepcion al enviar caracteres invalidos a la generación via PHPSpreadsheet
+
+[3.2.2](https://github.com/SIU-Toba/framework/releases/tag/v3.2.2) (2019-03-13)
+- Agrega metodo a toba_usuario_basico para obtener el identificador en arai-usuario para la cuenta actualmente logueada
+- Nueva opción `--excluir-bloqueads` para el comando `exportar_usuarios_arai`, evita exportar las cuentas bloqueadas
+
+[3.2.1](https://github.com/SIU-Toba/framework/releases/tag/v3.2.1) (2019-02-28)
+- Undo de braindead merge by gitflow
+- Recompilado de metadatos de toba_editor
+
+[3.2.0](https://github.com/SIU-Toba/framework/releases/tag/v3.2.0) (2019-02-22)
+- Se agrega ejemplo de uso de Araí-Reportes a toba_referencia
+- Bugfix en el metodo toba_parametros::get_proyecto() pasaba mal el id de la instancia
+- Fix en ef_multiseleccion para que se muestre correctamente la imagen de error al ser usados en ei_filtro
+- Se mejora la autoconfiguración de clientes rest via SIU-Araí
+- El hook de contacto con Arai pospone la carga del archivo con las claves al momento estrictamente necesario
+- Bugfix en exportacion pdf y excel de columnas compuestas de toba_ei_filtro
+- Actualizacion librerias
+  * vlucas/phpdotevn: v3.1.0
+  * ircmaxell/random-lib cambia de proveedor a paragonie/random-lib @2.0
+- Se modifican estilos en la pantalla de login generica para que al cambiar el manejador de salida no se vea desalineado
+- En la API JS se agregan parametros al metodo toba::set_menu_popup para poder reusarlo en los menu de manejadores de salida
+- Fix en toba_basic_logger para evitar leak de memoria cuando en la traza se devuelven objetos
+- Fix en toba_autenticacion_saml_onelogin cuando se permite usar la autenticacion basica de Toba
+- Se incorpora Workaround para salvaguardar bug en Yarn
+- Se incorpora toba_ei_calendario al esquema de manejadores de salida
+- Se agrega un ejemplo de manejador-salida parcial que deriva del paquete siu/manejador-salida-boostrap
+- El SP Onelogin va a correr en modo estricto (requiere certificados) en una instancia de produccion a menos que se especifique lo contrario 
+- Actualizacion librerias
+  * onelogin/php-saml: v3.1.0
+- El comando servicios_web configurar-cli agrega parametro para indicar el tipo de autenticacion
+- Fix en toba_factory_service para permitir manejadores de salida parciales
+- El ef_fecha muestra un rango de años fijo en el cliente (no relacionado con la validacion)
+- El log de WS extiende desde Psr\Log 
 - Se modifica tipclick.js y se agrega una clase css basica al archivo toba.css del template del proyecto
 - Se agregan clases css a las tablas que contienen los efs de seleccion multiple
 - Se agrega la imagen del calendario al proceso de migración ya que cambia su ruta
@@ -26,6 +134,67 @@
 - Bugfix a la ejecucion de test desde consola
 - Se agrega siu/manejador-salida-bootstrap como paquete sugerido
 - Se traslada parte de la generación del marcado HTML al paquete siu/manejador-salida-toba
+
+[3.1.14](https://github.com/SIU-Toba/framework/releases/tag/v3.1.14) (2019-10-15):
+- Se limita la version de la lib php-saml a la rama 2.16.x
+- Se implementa modo no interactivo al comando crear_usuario (backport from develop)
+- Se agregan opciones nuevas al archivo smtp.ini (backport from develop)
+- Se agrega comando para recompilar unicamente perfiles funcionales (backport from develop)
+- Se agrega un comando especifico para verificar existencia de la instancia Toba (backport from develop)
+
+[3.1.13](https://github.com/SIU-Toba/framework/releases/tag/v3.1.13) (2019-09-19):
+- Se incorpora la posibilidad de especificar el encoding al comando base::registrar (merge desde develop)
+
+[3.1.12](https://github.com/SIU-Toba/framework/releases/tag/v3.1.12) (2019-08-16):
+- Se incorpora la version del proyecto como atributo de las provisions del mismo (merge desde develop)
+- Suma toba_modelo_instalacion al esquema via toba_config (merge desde develop)
+- Fix en toba_rest cuando se setea la versión de la api a partir de la del proyecto (merge PR#44)
+- Bugfix en la lectura del archivo de configuracion para ldap (merge desde develop)
+
+[3.1.11](https://github.com/SIU-Toba/framework/releases/tag/v3.1.11) (2019-06-03):
+- Fix en toba_varios::array_a_utf8 y toba_varios::array_a_latin1, ahora usan las funciones utf8_e_seguro y utf8_d_seguro (merge develop)
+- Se ajustan los nombres de paquetes al formato composer 2.0 (lowercase)
+
+[3.1.10](https://github.com/SIU-Toba/framework/releases/tag/v3.1.10) (2019-04-30):
+- Actualizacion librerias:
+  * onelogin/php-saml: v2.15.0
+  * phpoffice/phpspreadsheet: v1.6.0
+  * rospdf/pdf-php: v0.12.51
+  * vlucas/phpdotenv: v2.6.1
+  * phpmailer/phpmailer: v6.0.7
+  * guzzlehttp/psr7: v1.5.2 
+- Reintegra el paquete siu/arai-json-migrator quitado por error
+
+[3.1.9](https://github.com/SIU-Toba/framework/releases/tag/v3.1.9) (2019-04-09):
+- Bugfix en el metodo toba_parametros::get_proyecto() pasaba mal el id de la instancia (merge desde 3.2.0)
+
+[3.1.8](https://github.com/SIU-Toba/framework/releases/tag/v3.1.8) (2019-03-13):
+- Agrega metodo para obtener el identificador de usuario en Arai-Usuarios para la cuenta actualmente logueada (merge desde develop)
+
+[3.1.7](https://github.com/SIU-Toba/framework/releases/tag/v3.1.7) (2019-02-13)
+- Se mejora la autoconfiguración de apis rest via arai-cli (merge @develop)
+- Se pospone la carga del archivo de claves de arai (merge @develop)
+
+[3.1.6](https://github.com/SIU-Toba/framework/releases/tag/v3.1.6) (2019-01-15)
+- Modifica el hook de Toba para Registry, remueve codigo no necesario
+- Modifica toba_version quitando la opcion pre-alpha y agregando la opcion dev
+
+[3.1.5](https://github.com/SIU-Toba/framework/releases/tag/v3.1.5) (2018-12-07)
+- Fix en verificacion de versiones compatibles de Arai (merge desde develop)
+- Acualizacion de seguridad de librerias:
+  * phpmailer/phpmailer: v6.0.6
+  * phpoffice/phpspreadsheet: v1.5.1
+
+[3.1.4](https://github.com/SIU-Toba/framework/releases/tag/v3.1.4) (2018-11-16)
+- Quita el paquete simplesamlphp/simplesamlphp del requiere en composer
+
+[3.1.3](https://github.com/SIU-Toba/framework/releases/tag/v3.1.3) (2018-10-29)
+- Bugfix en toba_analizador_logger, se invocaba mal una variable estatica
+
+[3.1.2](https://github.com/SIU-Toba/framework/releases/tag/v3.1.2) (2018-10-25)
+- Merge desde 3.0.31 con fix a toba_ini
+- Se agrega metodo para acceder al objeto db que se pasa al modelo durante la instanciacion via toba_modelo_catalogo
+- Se agrega advertencia en pantalla inicia de toba_editor cuando se usa el id desarrolo por defecto
 
 [3.1.0](https://github.com/SIU-Toba/framework/releases/tag/v3.1.0) (2018-09-19)
 - Se actualiza el link de la pantalla inicial del editor para que apunte al changelog
@@ -70,6 +239,9 @@
   * Agrega facebook/webdriver: v1.5.0
 - Se cambia Bower por Yarn como manejador de assets JS
 
+[3.0.31](https://github.com/SIU-Toba/framework/releases/tag/v3.0.31) (2018-10-25):
+- Se corrige bug en toba_ini que en ciertas secuencias de uso mezclaba configuraciones generales con secciones al guardar
+
 [3.0.30](https://github.com/SIU-Toba/framework/releases/tag/v3.0.30) (2018-08-28):
 - Se cambia el scope de los métodos que implementan el selector de ordenamiento múltiple del cuadro a protected
 - Se corrige bug por merge desde develop
@@ -79,7 +251,7 @@
 - Fix a ER que eliminaba los comentarios durante la creacion del archivo autoload 
 
 [3.0.28](https://github.com/SIU-Toba/framework/releases/tag/v3.0.28) (2018-08-21):
- - Fix a los metodos toba_varios::acceso_post y toba_varios::acceso_get
+- Fix a los metodos toba_varios::acceso_post y toba_varios::acceso_get
 
 [3.0.27](https://github.com/SIU-Toba/framework/releases/tag/v3.0.27) (2018-08-21):
 - Actualiza el archivo .lock
