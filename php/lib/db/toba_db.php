@@ -368,6 +368,7 @@ class toba_db
 		if (is_array($sql)) {
 			foreach(array_keys($sql) as $id) {
 				try {
+					$sql[$id] = $this->sentencia_preparar_motor($sql[$id]);
 					$sql_x = $this->pegar_estampilla_log($sql[$id]);
 					if ($this->registrar_ejecucion) {
 						$this->registro_ejecucion[] = $sql_x;
@@ -386,6 +387,7 @@ class toba_db
 				}
 			}
 		} else {
+			$sql = $this->sentencia_preparar_motor($sql);
 			$sql = $this->pegar_estampilla_log($sql);
 			try {
 				if ($this->registrar_ejecucion) {
@@ -450,6 +452,7 @@ class toba_db
 			$tipo_fetch=toba_db_fetch_asoc;	
 		}
 		
+		$sql = $this->sentencia_preparar_motor($sql);
 		$sql = $this->pegar_estampilla_log($sql);		
 		try {
 			if ($this->registrar_consultas) {
@@ -489,6 +492,7 @@ class toba_db
 		if (! isset($tipo_fetch)) {
 			$tipo_fetch=toba_db_fetch_asoc;	
 		}
+		$sql = $this->sentencia_preparar_motor($sql);
 		$sql = $this->pegar_estampilla_log($sql);
 		try {
 			if ($this->registrar_consultas) {
@@ -551,6 +555,12 @@ class toba_db
 	function ultimo_insert_id($secuencia = null)
 	{
 		return $this->conexion->lastInsertId($secuencia);
+	}
+
+	function sentencia_preparar_motor($sql)
+	{
+		if ($this->motor === 'oracle') return quitar_punto_coma_final($sql);
+		return $sql;
 	}
 
 	//------------------------------------------------------------------------

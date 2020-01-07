@@ -28,7 +28,7 @@ class toba_config
 	}
 
 	/**
-	 * Agrega un path a un archivo de configuraci髇 a ser cargado bajo un indice especifico
+	 * Agrega un path a un archivo de configuraci贸n a ser cargado bajo un indice especifico
 	 * @param string $index
 	 * @param path $file
 	 */
@@ -40,7 +40,7 @@ class toba_config
 	}
 
 	/**
-	 * Resetea los valores de configuraci髇 cargados
+	 * Resetea los valores de configuraci贸n cargados
 	 */
 	function reset()
 	{
@@ -74,7 +74,7 @@ class toba_config
 	}
 
 	/**
-	 * Devuelve una subseccion completa de configuraci髇
+	 * Devuelve una subseccion completa de configuraci贸n
 	 * @param string $seccion
 	 * @param string $subseccion
 	 * @return mixed
@@ -85,7 +85,7 @@ class toba_config
 	}
 
 	/**
-	 * Devuelve una seccion completa de configuraci髇
+	 * Devuelve una seccion completa de configuraci贸n
 	 * @param string $seccion
 	 * @return mixed
 	 */
@@ -109,7 +109,7 @@ class toba_config
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	/**
-	 * Carga los archivos basicos de configuraci髇 de Toba
+	 * Carga los archivos basicos de configuraci贸n de Toba
 	 */
 	protected function load_basics()
 	{
@@ -134,7 +134,7 @@ class toba_config
 	}
 
 	/**
-	 * Carga los archivos de configuraci髇 que se agregaron explicitamente
+	 * Carga los archivos de configuraci贸n que se agregaron explicitamente
 	 */
 	protected function load_manual_config()
 	{

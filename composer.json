@@ -9,6 +9,14 @@
     ],
     "repositories": [
         {
+            "type": "git",
+            "url": "https://github.com/intervanAR/rest.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/intervanAR/firebase-tokens-php.git"
+        },
+        {
             "type": "composer",
             "url": "https://satis.siu.edu.ar"
         }
@@ -20,7 +28,7 @@
         "symfony/yaml": "~4.4",
         "siu/security-multitool": "1.0",
         "paragonie/random-lib" : "~2.0",
-        "siu-toba/rest": "~2.0",
+        "siu-toba/rest": "dev-intervan",
         "siu-toba/ssl-cert-utils": "@dev",
         "guzzlehttp/guzzle": "~6.5",
         "onelogin/php-saml": "~3.4",
@@ -37,7 +45,8 @@
         "vlucas/phpdotenv": "~3.6",
         "ioncube/php-openssl-cryptor": "dev-master",
         "siu/manejador-salida-toba" : "~1.1",
-	"psr/log": "^1.1"
+	      "psr/log": "^1.1"
+        "kreait/firebase-tokens": "dev-intervan"
     },
     "require-dev": {
         "simpletest/simpletest": "~1.2", 
@@ -56,10 +65,6 @@
         "siu/manejador-salida-bootstrap": "Permite generar un marcado HTML responsive",
         "simplesamlphp/simplesamlphp": "Permite conectarse a un IDP centralizado (see onelogin)",
         "siu/rdi": "Permite almacenar documentos en un ECM"
-    },
-    "conflict": {
-        "siu/arai-cli": "<2.5.0",
-        "siu/interfaces-manejador-salida-toba" : "<1.2.0"
     },
     "bin": ["bin/toba",
             "bin/toba_docker"],

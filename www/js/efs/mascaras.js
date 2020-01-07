@@ -180,12 +180,13 @@ def.setNumber = function(_v, _d){
 	}
 
 	// get the value before the decimal point
-	var v_antes_decimal = String(Math.abs((v.indexOf(this.dec) > -1 ) ? v.split(this.dec)[0] : v));
+	var v_antes_decimal = String(Math.abs((v.indexOf(this.dec) > -1 ) ? vn.toString().split(this.dec)[0] : v));
 	// get the value after the decimal point
 	var v_despues_decimal = (v.indexOf(this.dec) > -1) ? v.split(this.dec)[1] : "";
 	var _vd = v_despues_decimal;
 
-	var isNegative = (vn !== 0 && Math.abs(vn)*-1 == vn);
+	// Esta comparación permite considerar al -0 como negativo
+	var isNegative = 1 / vn < 0;
 
 	// check for masking operations
 	var show = {

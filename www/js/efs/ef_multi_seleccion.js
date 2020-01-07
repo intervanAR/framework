@@ -56,11 +56,17 @@ ef_multi_seleccion.prototype.constructor = ef_multi_seleccion;
 	};
 	
 	/**
-	 *	Metodo aún no implementado!!!
+	 * Setea el estado actual
+	 * @type Array
 	 */
-	ef_multi_seleccion.prototype.set_estado = function(nuevo) {
-		alert('metodo set_estado del ef_multi_seleccion no implementado');
-	};	
+	ef_multi_seleccion_check.prototype.set_estado = function(estado) {
+		var elem = this.get_elementos();
+		for (var i=0; i < elem.length; i++) {
+			if (estado.indexOf(elem[i].value) > -1) {
+				elem[i].checked = true;
+			}
+		}
+	};
 
 	ef_multi_seleccion.prototype.resetear_estado = function() {
 		this.seleccionar_todo(false);

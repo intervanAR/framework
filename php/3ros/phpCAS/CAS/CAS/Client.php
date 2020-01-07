@@ -338,6 +338,7 @@ class CAS_Client
             $url = $this->_buildQueryUrl($url, 'gateway=true');
         }
         phpCAS::traceEnd($url);
+        //$url.='&locale=es'; // TODO: fix login cas, descomentar si aparece nuevamente
         return $url;
     }
 

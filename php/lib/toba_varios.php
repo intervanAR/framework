@@ -912,4 +912,13 @@
 		return "$scheme$user$pass$host$port$path$query$fragment";
 	}
 
+	function quitar_punto_coma_final($cadena) {
+		$cadena = trim($cadena);
+		if (substr($cadena, -1, 1) == ';') {
+			return substr($cadena, 0, -1);
+		} else {
+			return $cadena;
+		}
+	}
+
 ?>

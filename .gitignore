@@ -29,3 +29,5 @@ yarn.lock
 bin/arai-cli
 node_modules/
 proyectos/toba_referencia/www/siu/
+.idea
+.DS_Store

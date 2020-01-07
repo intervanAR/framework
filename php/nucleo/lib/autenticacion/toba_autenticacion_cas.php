@@ -7,6 +7,7 @@ class toba_autenticacion_cas extends toba_autenticacion implements toba_autentic
 	protected $archivo_certificado;
 	protected $permite_login_toba = false;
 	protected $validar_cn = true;
+	protected $validar_servidor = true;
 	private $cliente_cas;
 		
 	function __construct()
@@ -31,6 +32,9 @@ class toba_autenticacion_cas extends toba_autenticacion implements toba_autentic
 			}
 			if (isset($parametros['basicos']['permite_login_toba'])) {
 				$this->permite_login_toba = ($parametros['basicos']['permite_login_toba'] == 1);
+			}
+			if (isset($parametros['basicos']['validar_servidor'])) {
+				$this->validar_servidor = ($parametros['basicos']['validar_servidor'] == 1);
 			}
 		}
 	}
@@ -124,7 +128,7 @@ class toba_autenticacion_cas extends toba_autenticacion implements toba_autentic
 		phpCAS::setFixedServiceURL($url);	
 
 		// Tipo de auth
-		if (toba::instalacion()->es_produccion()) {
+		if (toba::instalacion()->es_produccion() && $this->validar_servidor) {
 			phpCAS::setCasServerCACert($this->archivo_certificado, $this->validar_cn);
 		} else {		
 			phpCAS::setNoCasServerValidation();
@@ -150,7 +154,12 @@ class toba_autenticacion_cas extends toba_autenticacion implements toba_autentic
 				throw new toba_error_autenticacion("El usuario '$id_usuario' no esta dado de alta en el sistema");
 		}
 		return $id_usuario;
-	}	
+	}
+
+	function get_usuario_toba()
+	{
+		return $this->recuperar_usuario_toba();
+	}
 	
 	private function instanciar_cliente_cas()
 	{

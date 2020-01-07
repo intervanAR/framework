@@ -104,8 +104,8 @@ class toba_perfil_datos
 		foreach($this->info_dimensiones[$fuente] as $d => $dim) {
 			foreach($dim['gatillos'] as $g => $gatillo) {
 				//El indice es por tablas a detectar, se deja la posicion del gatillo en la dim correspondiente
-				$this->indice_gatillos[$fuente][$d][$gatillo['tabla_rel_dim']] = $g;
-				$gatillos[] = $gatillo['tabla_rel_dim'];
+				$this->indice_gatillos[$fuente][$d][strtolower($gatillo['tabla_rel_dim'])] = $g;
+				$gatillos[] = strtolower($gatillo['tabla_rel_dim']);
 			}	
 		}
 		$this->gatillos_activos[$fuente] = array_unique($gatillos);
@@ -562,7 +562,8 @@ class toba_perfil_datos
 				} else {
 					$tabla = $temp[0];
 				}
-				if ( in_array(strtolower($tabla), $gatillos) ) {	
+				$tabla = strtolower($tabla);
+				if ( in_array($tabla, $gatillos) ) {
 					//La tabla pertenece a una dimension
 					if (isset($temp[2]) && strtolower($temp[1]) == 'as') {			//Que se trate de un AS para el alias
 						$alias = $temp[2];

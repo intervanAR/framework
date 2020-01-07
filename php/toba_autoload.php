@@ -33,6 +33,7 @@ class toba_autoload
 		'toba_db_postgres7' => 'lib/db/toba_db_postgres7.php',
 		'toba_db_sqlserver' => 'lib/db/toba_db_sqlserver.php',
 		'toba_generador_sentencias_postgres7' => 'lib/db/toba_generador_sentencias_postgres7.php',
+    'toba_db_oracle' => 'lib/db/toba_db_oracle.php',
 		'toba_parser_error_db' => 'lib/db/toba_parser_error_db.php',
 		'toba_parser_error_db_postgres7' => 'lib/db/toba_parser_error_db_postgres7.php',
 		'toba_pm_a_registro' => 'lib/puntos_montaje/toba_pm_a_registro.php',
@@ -388,6 +389,7 @@ class toba_autoload
 		'toba_usuarios_rest_bd' => 'nucleo/lib/rest/toba_usuarios_rest_bd.php',
 		'toba_usuarios_rest_conf' => 'nucleo/lib/rest/toba_usuarios_rest_conf.php',
 		'toba_usuarios_rest_jwt' => 'nucleo/lib/rest/toba_usuarios_rest_jwt.php',
+    'toba_usuarios_rest_firebase' => 'nucleo/lib/rest/toba_usuarios_rest_firebase.php',
 		'toba_usuarios_rest_ssl' => 'nucleo/lib/rest/toba_usuarios_rest_ssl.php',
 		'toba_imagen_captcha' => 'nucleo/lib/salidas/toba_imagen_captcha.php',
 		'toba_impr_html' => 'nucleo/lib/salidas/toba_impr_html.php',
@@ -504,7 +506,7 @@ class toba_autoload
 		'toba_solicitud_web' => 'nucleo/toba_solicitud_web.php',
 		'toba_autoload' => 'toba_autoload.php',
 		'toba_migracion' => 'modelo/migraciones/toba_migracion.php',
-                'PHP_Highlight' => '3ros/PHP_Highlight.php',
+    'PHP_Highlight' => '3ros/PHP_Highlight.php'
 	);
 }
 ?>

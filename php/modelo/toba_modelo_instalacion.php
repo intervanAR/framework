@@ -738,7 +738,7 @@ class toba_modelo_instalacion extends toba_modelo_elemento
 				throw new toba_error("INSTALACION: Los parametros definidos son incorrectos");
 			}
 			// El motor es reconocido
-			$motores = array('postgres7', 'informix', 'mysql', 'odbc', 'sqlserver');
+			$motores = array('postgres7', 'informix', 'mysql', 'odbc', 'sqlserver', 'oracle');
 			if( ! in_array( $parametros['motor'], $motores ) ) {
 				throw new toba_error("INSTALACION: El motor tiene que pertenecer a la siguente lista: " . implode(', ',$motores) );
 			}

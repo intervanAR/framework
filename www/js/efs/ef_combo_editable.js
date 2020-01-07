@@ -311,7 +311,7 @@ function ef_combo_editable(id_form, etiqueta, obligatorio, colapsado, tamano, mo
 			combo.openSelect();
 		}
 		if (datos.length === 0) {
-			this.resetear_estado();
+            //this.resetear_estado(); // Se comenta la linea para que no borre el texto ingresado cuando no encuentra datos
 		}	
 		return;
 	};

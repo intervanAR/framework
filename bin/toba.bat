@@ -1,2 +1,2 @@
 @echo off
-php "launcher.php" %*
+php "%~p0\launcher.php" %*
