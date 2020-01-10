@@ -103,12 +103,14 @@ class toba_autenticacion_saml  extends toba_autenticacion implements  toba_auten
 		$this->saml_sp = new SimpleSAML_Auth_Simple($this->auth_source);
 		$this->saml_sp->requireAuth($param);
 		$this->saml_attributes = $this->saml_sp->getAttributes();
+		$this->set_atributos_usuario($this->saml_attributes);
 		toba::logger()->debug("Attributos SAML: ".print_r($this->saml_attributes, true));
 	}
 
 	protected function recuperar_usuario_toba()
 	{
-		$id_usuario = utf8_d_seguro($this->saml_attributes[$this->atributo_usuario][0]);
+		$atributos_usuario = $this->get_atributos_usuario();
+		$id_usuario = utf8_d_seguro($atributos_usuario[$this->atributo_usuario][0]);
 		$datos_usuario = false;
 		
 		$subclase = $this->get_subclase_usuario_proyecto();

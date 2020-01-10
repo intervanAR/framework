@@ -14,6 +14,8 @@ class toba_vista_jasperreports
 	protected $tipo_descarga = 'attachment';
 	protected $jasper;
 	protected $temp_salida;
+	protected $tipo_salida = 'application/pdf';
+	
 
 	// Parametros para el reporte
 	protected $parametros;
@@ -177,7 +179,7 @@ class toba_vista_jasperreports
 	 */
 	function set_tipo_descarga( $tipo )
 	{
-		$this->tipo_salida = $tipo;
+		$this->tipo_descarga = $tipo;
 	}
 	
 	/**
@@ -426,7 +428,7 @@ class toba_vista_jasperreports
 	 */
 	protected function cabecera_http( $longitud )
 	{
-		toba_http::headers_download($this->tipo_descarga, $this->nombre_archivo, $longitud);
+		toba_http::headers_download($this->tipo_salida, $this->nombre_archivo, $longitud, $this->tipo_descarga);
 	}
 	
 

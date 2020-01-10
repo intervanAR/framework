@@ -227,11 +227,12 @@ class toba_solicitud_web extends toba_solicitud
 		if (toba::solicitud()->hay_zona() && toba::zona()->cargada()) {
 			toba::zona()->generar_html_barra_superior();
 		}
+		
 		//--- Se incluyen botones en la botonera de la operacion
 		$this->generar_html_botonera_sup($objetos);
-		echo "</div>";//---- Se finaliza aqui el div de la barra superior
-		echo '<div style="clear:both;"></div>';
-		echo "</div>"; //-- Se finaliza aqui el div del encabezado, por la optimizacion del pre-servicio..
+		
+		$this->tipo_pagina()->post_encabezado();
+		
 		$this->tipo_pagina()->pre_contenido();
 		
 		//--- Abre el formulario
@@ -339,7 +340,14 @@ class toba_solicitud_web extends toba_solicitud
 		$salida->enviar_archivo();
 	}
 	
-
+	protected function servicio__vista_araireportes( $objetos )
+	{
+		$salida = new toba_vista_araireportes();		
+		$salida->asignar_objetos($objetos);
+		$salida->generar_salida();
+		$salida->enviar_archivo();
+	}
+	
 	/**
 	 * Genera una salida html pensada para impresión
 	 */
@@ -486,11 +494,8 @@ class toba_solicitud_web extends toba_solicitud
 			$objetos[0]->servicio__ajax();
 		} catch(toba_error $e) {
 			toba::logger()->error($e, 'toba');
-			$mensaje_debug = null;
-			if (toba::logger()->modo_debug()) {
-				$mensaje_debug = $e->get_mensaje_log();
-			}				
-			toba::notificacion()->error($e->get_mensaje(), $mensaje_debug);
+			$mensaje_debug = (toba::logger()->modo_debug()) ? $e->get_mensaje_log() : $e->get_mensaje();
+			echo $mensaje_debug;
 		}
 	}
 	
